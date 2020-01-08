@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.Logger;
+import frc.robot.OI;
 import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -14,11 +15,20 @@ public class RetractCommand extends Command {
 
   @Override
   protected void initialize() {
+    final double speedscale = 1;
+    final double deadzone = 0.075;
   }
 
   @Override
   protected void execute() {
-      driveSubsystem.drive(1,1);
+    double y = OI.driveStick.getY();
+    double z = OI.driveStick.getZ();
+    z*=Math.abs(z);
+
+    double leftPower = speedscale*(y-z);
+    double rightPower = speedscale*(y+z);
+
+    driveSubsystem.drive(leftPower,rightPower);
   }
 
   @Override
