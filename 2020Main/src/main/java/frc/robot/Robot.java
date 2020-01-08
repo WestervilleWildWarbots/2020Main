@@ -19,6 +19,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
+
+  //Subsystem init
+  public static DriveSubsystem driveSubsystem;
+
+  //Command init
+  public static DriveCommand driveCommand;
+
+  public static OI oi;
+
+
+
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
@@ -30,6 +41,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+
+    driveSubsystem = DriveSubsystem();
+
+    driveCommand = DriveCommand();
+
+    CameraServer.getInstance().startAutomaticCapture();
+
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
@@ -70,15 +88,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
-    }
+
   }
 
   /**
@@ -86,6 +96,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    driveCommand.execute();
   }
 
   /**
