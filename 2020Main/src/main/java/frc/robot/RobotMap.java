@@ -1,7 +1,7 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Sendable;
+    import edu.wpi.first.wpilibj.DigitalInput;
+    import edu.wpi.first.wpilibj.Sendable;
 
 public class RobotMap{
     
