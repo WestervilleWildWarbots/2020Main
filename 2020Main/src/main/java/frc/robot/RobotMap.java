@@ -1,18 +1,17 @@
 package frc.robot;
 
-    import edu.wpi.first.wpilibj.DigitalInput;
-    import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Sendable;
 
 public class RobotMap{
     
-//drive stick
-public static final int DRIVE_STICK = 0;
+    //drive stick
+    public static final int DRIVE_STICK = 0;
 
-//motor setup 
-public static final int MOTOR_FL = 11;
-public static final int MOTOR_FR = 12;
-public static final int MOTOR_BL = 21;
-public static final int MOTOR_BR = 22; 
-
+    //motor setup 
+    public static final int MOTOR_FL = 11;
+    public static final int MOTOR_FR = 12;
+    public static final int MOTOR_BL = 21;
+    public static final int MOTOR_BR = 22; 
 
 }
