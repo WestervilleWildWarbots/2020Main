@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
 
     driveCommand = new DriveCommand();
 
-    CameraServer.getInstance().startAutomaticCapture();
+    //CameraServer.getInstance().startAutomaticCapture();
 
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
