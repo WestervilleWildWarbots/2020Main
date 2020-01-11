@@ -1,25 +1,28 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.*;
+import com.ctre.phoenix.motorcontrol.can.*;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 public class DriveSubsystem extends Subsystem {
 
-        private static WPI_TalonSRX frontLeft;
-        private static WPI_TalonSRX frontRight;
-        private static WPI_TalonSRX backLeft;
-        private static WPI_TalonSRX backRight;
+    private static TalonSRX frontLeft;
+        private static TalonSRX frontRight;
+        private static TalonSRX backLeft;
+        private static TalonSRX backRight;
 
   public DriveSubsystem() {
 
-        WPI_TalonSRX frontLeft = new WPI_TalonSRX(RobotMap.MOTOR_FL);
-        WPI_TalonSRX frontRight = new WPI_TalonSRX(RobotMap.MOTOR_FR);
-        WPI_TalonSRX backLeft = new WPI_TalonSRX(RobotMap.MOTOR_BL);
-        WPI_TalonSRX backRight = new WPI_TalonSRX(RobotMap.MOTOR_BR);
+        TalonSRX frontLeft = new TalonSRX(RobotMap.MOTOR_FL);
+        TalonSRX frontRight = new TalonSRX(RobotMap.MOTOR_FR);
+        TalonSRX backLeft = new TalonSRX(RobotMap.MOTOR_BL);
+        TalonSRX backRight = new TalonSRX(RobotMap.MOTOR_BR);
+        
+        frontRight.setInverted(true);
+        backLeft.follow(frontLeft);    
+        backRight.follow(frontRight);
 
   }
 
@@ -30,7 +33,8 @@ public class DriveSubsystem extends Subsystem {
 
     //Basic Drive Method
   public void drive(double leftSpeed, double rightSpeed) {
-      
+    frontLeft.set(ControlMode.PercentOutput,leftSpeed);
+    frontRight.set(ControlMode.PercentOutput,rightSpeed);
   }
 
   

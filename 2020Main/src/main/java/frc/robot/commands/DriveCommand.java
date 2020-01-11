@@ -1,13 +1,12 @@
 package frc.robot.commands;
 
-import frc.robot.Logger;
 import frc.robot.OI;
 import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.subsystems.*;
 
-public class RetractCommand extends Command {
+public class DriveCommand extends Command {
 
   public DriveCommand() {
     requires(Robot.driveSubsystem);
@@ -15,12 +14,13 @@ public class RetractCommand extends Command {
 
   @Override
   protected void initialize() {
-    final double speedscale = 1;
-    final double deadzone = 0.075;
   }
 
   @Override
-  protected void execute() {
+public void execute() {
+    final double speedscale = 1;
+    final double deadzone = 0.075;   
+
     double y = OI.driveStick.getY();
     double z = OI.driveStick.getZ();
     z*=Math.abs(z);
@@ -28,7 +28,7 @@ public class RetractCommand extends Command {
     double leftPower = speedscale*(y-z);
     double rightPower = speedscale*(y+z);
 
-    driveSubsystem.drive(leftPower,rightPower);
+    Robot.driveSubsystem.drive(leftPower,rightPower);
   }
 
   @Override
