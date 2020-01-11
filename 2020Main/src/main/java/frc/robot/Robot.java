@@ -11,8 +11,10 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.DriveCommand;
-import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.commands.*;
+import frc.robot.commands.HopperCommand;
+import frc.robot.subsystems.*;
+import frc.robot.subsystems.IntakeSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,9 +27,12 @@ public class Robot extends TimedRobot {
 
   //Subsystem init
   public static DriveSubsystem driveSubsystem;
+  public static IntakeSubsystem intakeSubsystem;
 
   //Command init
   public static DriveCommand driveCommand;
+  public static HopperCommand hopperCommand;
+  public static IntakeCommand intakeCommand;
 
   public static OI oi;
 
@@ -44,8 +49,12 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 
     driveSubsystem = new DriveSubsystem();
+    intakeSubsystem = new IntakeSubsystem();
 
     driveCommand = new DriveCommand();
+    hopperCommand = new HopperCommand();
+    intakeCommand = new IntakeCommand();
+
 
     CameraServer.getInstance().startAutomaticCapture();
 
@@ -100,6 +109,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     driveCommand.execute();
+    intakeCommand.execute();
+    hopperCommand.execute();
   }
 
   /**
