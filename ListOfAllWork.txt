@@ -7,3 +7,4 @@ Pick Up Mechanism
 Hopper Code
 Detection of Reflective Tape
 Autonomous
+Smart Dashboard (Shuffleboard Maybe)
