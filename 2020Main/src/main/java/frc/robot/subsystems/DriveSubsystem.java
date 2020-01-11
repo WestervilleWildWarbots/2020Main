@@ -8,21 +8,21 @@ import frc.robot.RobotMap;
 
 public class DriveSubsystem extends Subsystem {
 
-    private static TalonSRX frontLeft;
-        private static TalonSRX frontRight;
-        private static TalonSRX backLeft;
-        private static TalonSRX backRight;
+  private static TalonSRX frontLeft;
+  private static TalonSRX frontRight;
+  private static TalonSRX backLeft;
+  private static TalonSRX backRight;
 
   public DriveSubsystem() {
 
-        TalonSRX frontLeft = new TalonSRX(RobotMap.MOTOR_FL);
-        TalonSRX frontRight = new TalonSRX(RobotMap.MOTOR_FR);
-        TalonSRX backLeft = new TalonSRX(RobotMap.MOTOR_BL);
-        TalonSRX backRight = new TalonSRX(RobotMap.MOTOR_BR);
+    TalonSRX frontLeft = new TalonSRX(RobotMap.MOTOR_FL);
+    TalonSRX frontRight = new TalonSRX(RobotMap.MOTOR_FR);
+    TalonSRX backLeft = new TalonSRX(RobotMap.MOTOR_BL);
+    TalonSRX backRight = new TalonSRX(RobotMap.MOTOR_BR);
         
-        frontRight.setInverted(true);
-        backLeft.follow(frontLeft);    
-        backRight.follow(frontRight);
+    frontRight.setInverted(true);
+    backLeft.follow(frontLeft);    
+    backRight.follow(frontRight);
 
   }
 
