@@ -6,7 +6,7 @@ RobotMap and OI - Gabe
 DriveCommand and Drive Subsystem - David
 Robot and SmartDashboard (Camera) - Michael
 
-Set up sim - Michael
-Test driving on sim - TBD
+Set up sim - David
+Test driving on sim - Ethan
 
 
