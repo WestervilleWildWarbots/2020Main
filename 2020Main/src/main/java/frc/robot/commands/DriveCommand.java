@@ -22,6 +22,15 @@ public void execute() {
 
     double y = OI.driveStick.getY();
     double z = OI.driveStick.getZ();
+
+    if (y <= deadzone){
+      y = 0;
+    }
+
+    if (z <= deadzone){
+      z = 0;
+    }
+
     z*=Math.abs(z);
 
     double leftPower = speedscale*(y-z);

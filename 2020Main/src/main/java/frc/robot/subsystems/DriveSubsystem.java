@@ -1,24 +1,25 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.*;
-import com.ctre.phoenix.motorcontrol.can.*;
+
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 public class DriveSubsystem extends Subsystem {
 
-  private static TalonSRX frontLeft;
-  private static TalonSRX frontRight;
-  private static TalonSRX backLeft;
-  private static TalonSRX backRight;
+  private static CANSparkMax frontLeft;
+  private static CANSparkMax frontRight;
+  private static CANSparkMax backLeft;
+  private static CANSparkMax backRight;
 
   public DriveSubsystem() {
 
-    TalonSRX frontLeft = new TalonSRX(RobotMap.MOTOR_FL);
-    TalonSRX frontRight = new TalonSRX(RobotMap.MOTOR_FR);
-    TalonSRX backLeft = new TalonSRX(RobotMap.MOTOR_BL);
-    TalonSRX backRight = new TalonSRX(RobotMap.MOTOR_BR);
+    CANSparkMax frontLeft = new CANSparkMax(RobotMap.MOTOR_FL,MotorType.kBrushless );
+    CANSparkMax frontRight = new CANSparkMax(RobotMap.MOTOR_FR,MotorType.kBrushless);
+    CANSparkMax backLeft = new CANSparkMax(RobotMap.MOTOR_BL,MotorType.kBrushless);
+    CANSparkMax backRight = new CANSparkMax(RobotMap.MOTOR_BR,MotorType.kBrushless);
         
     frontRight.setInverted(true);
     backLeft.follow(frontLeft);    
@@ -33,8 +34,8 @@ public class DriveSubsystem extends Subsystem {
 
     //Basic Drive Method
   public void drive(double leftSpeed, double rightSpeed) {
-    frontLeft.set(ControlMode.PercentOutput,leftSpeed);
-    frontRight.set(ControlMode.PercentOutput,rightSpeed);
+    frontLeft.set(leftSpeed);
+    frontRight.set(rightSpeed);
   }
 
   
