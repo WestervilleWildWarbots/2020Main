@@ -11,8 +11,9 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.DriveCommand;
-import frc.robot.subsystems.DriveSubsystem;
+
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.Ultrasonic;
 
 /**
@@ -26,9 +27,12 @@ public class Robot extends TimedRobot {
 
   //Subsystem init
   public static DriveSubsystem driveSubsystem;
+  public static IntakeSubsystem intakeSubsystem;
 
   //Command init
   public static DriveCommand driveCommand;
+  public static HopperCommand hopperCommand;
+  public static IntakeCommand intakeCommand;
 
 //OI init
   public static OI oi;
@@ -49,8 +53,12 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 
     driveSubsystem = new DriveSubsystem();
+    intakeSubsystem = new IntakeSubsystem();
 
     driveCommand = new DriveCommand();
+    hopperCommand = new HopperCommand();
+    intakeCommand = new IntakeCommand();
+
 
     CameraServer.getInstance().startAutomaticCapture();
 
@@ -92,7 +100,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+    m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
   }
 
@@ -110,6 +118,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     driveCommand.execute();
+    intakeCommand.execute();
+    hopperCommand.execute();
   }
 
   /**
