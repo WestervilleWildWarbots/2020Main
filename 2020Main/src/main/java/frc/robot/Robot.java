@@ -11,10 +11,10 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import frc.robot.commands.*;
-import frc.robot.commands.HopperCommand;
 import frc.robot.subsystems.*;
-import frc.robot.subsystems.IntakeSubsystem;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,7 +34,11 @@ public class Robot extends TimedRobot {
   public static HopperCommand hopperCommand;
   public static IntakeCommand intakeCommand;
 
+//OI init
   public static OI oi;
+
+  //ultrasonic init
+  Ultrasonic ultrasonic = new Ultrasonic(1,2);
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
@@ -56,13 +60,18 @@ public class Robot extends TimedRobot {
     intakeCommand = new IntakeCommand();
 
 
-    //CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture();
 
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
 
     oi = new OI();
+
+    //sets the ultrasonic to auto
+    ultrasonic.setAutomaticMode(true);
+
+    SmartDashboard.putNumber("Distance Sensor",ultrasonic.getRangeInches());
   }
 
   /**
@@ -91,7 +100,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+    m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
   }
 
