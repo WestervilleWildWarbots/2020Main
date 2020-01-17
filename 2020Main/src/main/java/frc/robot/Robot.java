@@ -9,12 +9,16 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import frc.robot.commands.*;
-import frc.robot.subsystems.*;
-import edu.wpi.first.wpilibj.Ultrasonic;
+import frc.robot.commands.DriveCommand;
+import frc.robot.commands.HopperCommand;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ShooterCommand;
+import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,10 +31,12 @@ public class Robot extends TimedRobot {
 
   //Subsystem init
   public static DriveSubsystem driveSubsystem;
+  public static ShooterSubsystem shooterSubsystem;
   public static IntakeSubsystem intakeSubsystem;
 
   //Command init
   public static DriveCommand driveCommand;
+  public static ShooterCommand shooterCommand;
   public static HopperCommand hopperCommand;
   public static IntakeCommand intakeCommand;
 
@@ -53,9 +59,11 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 
     driveSubsystem = new DriveSubsystem();
+    shooterSubsystem = new ShooterSubsystem();
     intakeSubsystem = new IntakeSubsystem();
 
     driveCommand = new DriveCommand();
+    shooterCommand = new ShooterCommand();
     hopperCommand = new HopperCommand();
     intakeCommand = new IntakeCommand();
 
@@ -118,6 +126,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     driveCommand.execute();
+    if(OI.shootButton.get()){
+      shooterCommand.execute();
+    }
     intakeCommand.execute();
     hopperCommand.execute();
   }
