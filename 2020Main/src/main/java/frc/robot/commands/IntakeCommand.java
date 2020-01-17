@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import frc.robot.RobotMap;
 import frc.robot.OI;
 import frc.robot.Robot;
 
@@ -13,11 +14,12 @@ public class IntakeCommand extends Command {
 
   @Override
   protected void initialize() {
+
   }
 
   @Override
-public void execute() {
-
+  public void execute() {
+    Robot.intakeSubsystem.intakeSpin(1);
   }
 
   @Override
