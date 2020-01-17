@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.DriveSubsystem;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,7 +30,11 @@ public class Robot extends TimedRobot {
   //Command init
   public static DriveCommand driveCommand;
 
+//OI init
   public static OI oi;
+
+  //ultrasonic init
+  Ultrasonic ultrasonic = new Ultrasonic(1,2);
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
@@ -54,6 +59,11 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
 
     oi = new OI();
+
+    //sets the ultrasonic to auto
+    ultrasonic.setAutomaticMode(true);
+
+    SmartDashboard.putNumber("Distance Sensor",ultrasonic.getRangeInches());
   }
 
   /**
