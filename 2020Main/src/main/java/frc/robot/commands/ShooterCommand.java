@@ -8,11 +8,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class ShooterCommand extends Command {
   public ShooterCommand() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    requires(Robot.shooterSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -22,7 +22,10 @@ public class ShooterCommand extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
+  public void execute() {
+
+    Robot.shooterSubsystem.shoot(1);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
