@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 
-
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -25,7 +24,7 @@ public class DriveSubsystem extends Subsystem {
     backLeft.follow(frontLeft);    
     backRight.follow(frontRight);
 
-  }
+  } 
 
   @Override
   public void initDefaultCommand(){
@@ -34,6 +33,7 @@ public class DriveSubsystem extends Subsystem {
 
     //Basic Drive Method
   public void drive(double leftSpeed, double rightSpeed) {
+    System.out.print(leftSpeed);
     frontLeft.set(leftSpeed);
     frontRight.set(rightSpeed);
   }

@@ -9,11 +9,15 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.HopperCommand;
+import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
 /**
@@ -28,12 +32,19 @@ public class Robot extends TimedRobot {
   //Subsystem init
   public static DriveSubsystem driveSubsystem;
   public static ShooterSubsystem shooterSubsystem;
+  public static IntakeSubsystem intakeSubsystem;
 
   //Command init
   public static DriveCommand driveCommand;
   public static ShooterCommand shooterCommand;
+  public static HopperCommand hopperCommand;
+  public static IntakeCommand intakeCommand;
 
+//OI init
   public static OI oi;
+
+  //ultrasonic init
+  Ultrasonic ultrasonic = new Ultrasonic(1,2);
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
@@ -49,9 +60,13 @@ public class Robot extends TimedRobot {
 
     driveSubsystem = new DriveSubsystem();
     shooterSubsystem = new ShooterSubsystem();
+    intakeSubsystem = new IntakeSubsystem();
 
     driveCommand = new DriveCommand();
     shooterCommand = new ShooterCommand();
+    hopperCommand = new HopperCommand();
+    intakeCommand = new IntakeCommand();
+
 
     CameraServer.getInstance().startAutomaticCapture();
 
@@ -60,6 +75,11 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
 
     oi = new OI();
+
+    //sets the ultrasonic to auto
+    ultrasonic.setAutomaticMode(true);
+
+    SmartDashboard.putNumber("Distance Sensor",ultrasonic.getRangeInches());
   }
 
   /**
@@ -88,7 +108,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+    m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
   }
 
@@ -109,6 +129,8 @@ public class Robot extends TimedRobot {
     if(OI.shootButton.get()){
       shooterCommand.execute();
     }
+    intakeCommand.execute();
+    hopperCommand.execute();
   }
 
   /**
