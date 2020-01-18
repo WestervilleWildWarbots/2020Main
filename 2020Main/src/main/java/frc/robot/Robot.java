@@ -117,7 +117,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-
+    hopperCommand.execute();
   }
 
   /**

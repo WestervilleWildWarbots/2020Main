@@ -8,10 +8,10 @@ import frc.robot.RobotMap;
 
 public class DriveSubsystem extends Subsystem {
 
-  private static CANSparkMax frontLeft;
-  private static CANSparkMax frontRight;
-  private static CANSparkMax backLeft;
-  private static CANSparkMax backRight;
+  public CANSparkMax frontLeft;
+  public CANSparkMax frontRight;
+  public CANSparkMax backLeft;
+  public CANSparkMax backRight;
 
   public DriveSubsystem() {
 
@@ -24,7 +24,10 @@ public class DriveSubsystem extends Subsystem {
     backLeft.follow(frontLeft);    
     backRight.follow(frontRight);
 
-  } 
+    backLeft.close();
+    backRight.close();
+
+  }
 
   @Override
   public void initDefaultCommand(){

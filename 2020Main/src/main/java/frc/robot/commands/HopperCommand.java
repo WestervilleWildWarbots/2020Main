@@ -1,8 +1,6 @@
 package frc.robot.commands;
 
-import frc.robot.OI;
 import frc.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 public class HopperCommand extends Command {
@@ -17,7 +15,7 @@ public class HopperCommand extends Command {
 
   @Override
 public void execute() {
-
+    Robot.intakeSubsystem.hopperSpin(1);
   }
 
   @Override
