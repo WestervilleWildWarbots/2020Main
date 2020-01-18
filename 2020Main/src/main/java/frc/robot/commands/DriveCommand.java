@@ -16,13 +16,15 @@ public class DriveCommand extends Command {
   }
 
   @Override
-public void execute() {
+  public void execute() {
     final double speedscale = 1;
     final double deadzone = 0.075;   
 
     double y = OI.driveStick.getY();
     double z = OI.driveStick.getZ();
 
+    //Deadzone Code
+    
     if (y <= deadzone){
       y = 0;
     }
@@ -30,7 +32,7 @@ public void execute() {
     if (z <= deadzone){
       z = 0;
     }
-
+   
     z*=Math.abs(z);
 
     double leftPower = speedscale*(y-z);
@@ -46,6 +48,7 @@ public void execute() {
 
   @Override
   protected void end() {
+  
   }
 
   @Override
