@@ -16,13 +16,14 @@ public class DriveCommand extends Command {
   }
 
   @Override
-public void execute() {
-    final double speedscale = 1;
-    final double deadzone = 0.075;   
+  public void execute() {
+    final double speedscale = 0.5;
+    final double deadzone = 0.15;   
 
     double y = OI.driveStick.getY();
     double z = OI.driveStick.getZ();
 
+    //Deadzone Code
     if (Math.abs(y) <= deadzone){
       y = 0;
     }
@@ -30,11 +31,11 @@ public void execute() {
     if (Math.abs(z) <= deadzone){
       z = 0;
     }
-
+   
     z*=Math.abs(z);
 
     double leftPower = speedscale*(z-y);
-    double rightPower = speedscale*(z+y);
+    double rightPower = speedscale*(z-y);
 
     Robot.driveSubsystem.tankDrive(leftPower,rightPower);
   }
@@ -46,6 +47,7 @@ public void execute() {
 
   @Override
   protected void end() {
+  
   }
 
   @Override
