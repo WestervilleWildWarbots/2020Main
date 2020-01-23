@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.HopperCommand;
 import frc.robot.commands.IntakeCommand;
@@ -39,6 +41,7 @@ public class Robot extends TimedRobot {
   public static ShooterCommand shooterCommand;
   public static HopperCommand hopperCommand;
   public static IntakeCommand intakeCommand;
+  public static AutonomousCommand autonomousCommand;
 
 //OI init
   public static OI oi;
@@ -66,6 +69,7 @@ public class Robot extends TimedRobot {
     shooterCommand = new ShooterCommand();
     hopperCommand = new HopperCommand();
     intakeCommand = new IntakeCommand();
+    autonomousCommand = new AutonomousCommand();
 
 
     CameraServer.getInstance().startAutomaticCapture();
@@ -118,6 +122,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     hopperCommand.execute();
+    autonomousCommand.execute();
   }
 
   /**
