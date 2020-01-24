@@ -50,7 +50,7 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void drive(double leftSpeed, double rightSpeed){
-    frontLeft.set(leftController.calculate(leftSpeed));
-    frontRight.set(rightController.calculate(rightSpeed));
+    frontLeft.set(leftController.calculate(0.1));
+    frontRight.set(rightController.calculate(0.1));
   }
 }
