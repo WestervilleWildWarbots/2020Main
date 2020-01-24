@@ -13,6 +13,15 @@ public class DriveSubsystem extends Subsystem {
   public CANSparkMax backLeft;
   public CANSparkMax backRight;
 
+  public double Lp = 0.1;
+  public double Li = 0.1;
+  public double Ld = 0.1;
+  public double Rp = 1;
+  public double Ri = 1;
+  public double Rd = 1;
+  private edu.wpi.first.wpilibj.controller.PIDController leftController = new edu.wpi.first.wpilibj.controller.PIDController(Lp,Li,Ld);
+  private edu.wpi.first.wpilibj.controller.PIDController rightController = new edu.wpi.first.wpilibj.controller.PIDController(Rp,Ri,Rd);
+
   public DriveSubsystem() {
 
     frontLeft = new CANSparkMax(RobotMap.MOTOR_FL,MotorType.kBrushless );
@@ -35,10 +44,13 @@ public class DriveSubsystem extends Subsystem {
   }
 
     //Basic Drive Method
-  public void drive(double leftSpeed, double rightSpeed) {
+  public void tankDrive(double leftSpeed, double rightSpeed) {
     frontLeft.set(leftSpeed);
     frontRight.set(rightSpeed);
   }
 
-  
+  public void drive(double leftSpeed, double rightSpeed){
+    frontLeft.set(leftController.calculate(leftSpeed));
+    frontRight.set(rightController.calculate(rightSpeed));
+  }
 }
