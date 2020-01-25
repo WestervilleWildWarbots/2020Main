@@ -17,7 +17,7 @@ public class DriveCommand extends Command {
 
   @Override
   public void execute() {
-    final double speedscale = 1;
+    final double speedscale = 0.5;
     final double deadzone = 0.15;   
 
     double y = OI.driveStick.getY();
