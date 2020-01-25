@@ -12,9 +12,10 @@ public class DriveSubsystem extends Subsystem {
   public CANSparkMax frontRight;
   public CANSparkMax backLeft;
   public CANSparkMax backRight;
-  public double Lp = 1;
-  public double Li = 1;
-  public double Ld = 1;
+
+  public double Lp = 0.1;
+  public double Li = 0.1;
+  public double Ld = 0.1;
   public double Rp = 1;
   public double Ri = 1;
   public double Rd = 1;
@@ -44,25 +45,12 @@ public class DriveSubsystem extends Subsystem {
 
     //Basic Drive Method
   public void tankDrive(double leftSpeed, double rightSpeed) {
-    frontRight.setInverted(true);
-    backLeft.follow(frontLeft);    
-    backRight.follow(frontRight);
-
-    backLeft.close();
-    backRight.close();
-
     frontLeft.set(leftSpeed);
     frontRight.set(rightSpeed);
   }
 
   public void drive(double leftSpeed, double rightSpeed){
-    backLeft.follow(backLeft);
-    backRight.follow(backRight);
-    backRight.setInverted(true);
-
-    frontLeft.set(leftController.calculate(leftSpeed));
-    frontRight.set(rightController.calculate(rightSpeed));
+    frontLeft.set(leftController.calculate(0.1));
+    frontRight.set(rightController.calculate(0.1));
   }
-
-  
 }
