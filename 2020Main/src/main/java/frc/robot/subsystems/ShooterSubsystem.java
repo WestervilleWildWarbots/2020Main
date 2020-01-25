@@ -29,15 +29,12 @@ public class ShooterSubsystem extends Subsystem {
 
     shooterTopTalon = new WPI_TalonSRX(RobotMap.MOTOR_ST);
     shooterBotTalon = new WPI_TalonSRX(RobotMap.MOTOR_SB);
-
-    shooterBotTalon.follow(shooterTopTalon);
-
   }
 
   public void shoot(double spd){
 
-    shooterTopTalon.set(spd);
-    
+  shooterTopTalon.set(spd);
+  shooterBotTalon.set(-(spd+0.3));
   }
 
 }

@@ -126,9 +126,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     driveCommand.execute();
-    if(OI.shootButton.get()){
+
       shooterCommand.execute();
-    }
+
     intakeCommand.execute();
     hopperCommand.execute();
   }

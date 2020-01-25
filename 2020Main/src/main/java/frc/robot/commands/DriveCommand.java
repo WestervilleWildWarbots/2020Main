@@ -17,7 +17,7 @@ public class DriveCommand extends Command {
 
   @Override
   public void execute() {
-    final double speedscale = 1;
+    final double speedscale = .1;
     final double deadzone = 0.15;   
 
     double y = OI.driveStick.getY();
@@ -37,7 +37,7 @@ public class DriveCommand extends Command {
     double leftPower = speedscale*(z-y);
     double rightPower = speedscale*(z+y);
 
-    Robot.driveSubsystem.drive(leftPower,rightPower);
+    Robot.driveSubsystem.drive(leftPower, rightPower);
   }
 
   @Override
