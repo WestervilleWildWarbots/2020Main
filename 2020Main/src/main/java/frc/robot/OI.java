@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.HopperCommand;
 import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ShooterCommand;
 
 public class OI{
 
@@ -16,8 +17,10 @@ public class OI{
         final JoystickButton hopperButton = new JoystickButton(driveStick, 3);
 
         hopperButton.toggleWhenPressed(new HopperCommand());
+
         shootButton = new JoystickButton(driveStick, 1);
-        
+        shootButton.toggleWhenPressed(new ShooterCommand());
+
         //start of intake button code
         ///*change to private*/boolean intakeState = false;
         //
