@@ -29,7 +29,9 @@ public class DriveSubsystem extends Subsystem {
 
     //Basic Drive Method
   public void drive(double leftSpeed, double rightSpeed) {
-    
+    System.out.println(leftSpeed);
+    System.out.println(rightSpeed);
+
     frontLeft.set(leftSpeed);
     backRight.set(rightSpeed);
   }

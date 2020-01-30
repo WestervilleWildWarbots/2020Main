@@ -19,6 +19,7 @@ public class ShooterSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
+
   private static WPI_TalonSRX shooterTopTalon;
   private static WPI_TalonSRX shooterBotTalon;
 
@@ -34,7 +35,7 @@ public class ShooterSubsystem extends Subsystem {
   public void shoot(double spd){
 
   shooterTopTalon.set(spd);
-  shooterBotTalon.set(-(spd+0.3));
+  shooterBotTalon.set(-(spd+0.40));
   }
 
 }
