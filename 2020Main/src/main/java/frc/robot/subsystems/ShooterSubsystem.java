@@ -18,7 +18,7 @@ import frc.robot.RobotMap;
 public class ShooterSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-public double shootTime = 0;
+public static double shootTime = 0;
 
   private static WPI_TalonSRX shooterTopTalon;
   private static WPI_TalonSRX shooterBotTalon;
@@ -55,7 +55,7 @@ public double shootTime = 0;
       shooterBotTalon.set(-spd + 2*(shootTime));
     }else if(shootTime <= (spd+0.25)*50){
       shooterTopTalon.set(0);
-      shooterBotTalon.set(-2*(shootTime));
+      shooterBotTalon.set(-spd + 2*(shootTime));
     }else{
       shooterTopTalon.set(0);
       shooterBotTalon.set(0);
