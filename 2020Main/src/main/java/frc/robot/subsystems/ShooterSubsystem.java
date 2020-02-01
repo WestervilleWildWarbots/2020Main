@@ -27,7 +27,8 @@ public static double shootTime = 0;
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    shootTime =0;
+    System.out.print("shoot init default command");
+    shootTime =1;
     shooterTopTalon = new WPI_TalonSRX(RobotMap.MOTOR_ST);
     shooterBotTalon = new WPI_TalonSRX(RobotMap.MOTOR_SB);
   }

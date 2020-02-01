@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.commands.AutonomousCommand;
+import frc.robot.commands.CeasefireCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.HopperCommand;
 import frc.robot.commands.IntakeCommand;
@@ -42,6 +43,7 @@ public class Robot extends TimedRobot {
   public static HopperCommand hopperCommand;
   public static IntakeCommand intakeCommand;
   public static AutonomousCommand autonomousCommand;
+  public static CeasefireCommand ceasefireCommand;
 
 //OI init
   public static OI oi;
@@ -70,6 +72,7 @@ public class Robot extends TimedRobot {
     hopperCommand = new HopperCommand();
     intakeCommand = new IntakeCommand();
     autonomousCommand = new AutonomousCommand();
+    ceasefireCommand = new CeasefireCommand();
 
 
     CameraServer.getInstance().startAutomaticCapture();
@@ -96,6 +99,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+   // System.out.println("robot");
+   oi.stickUpdate();
   }
 
   /**
@@ -131,8 +136,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     driveCommand.execute();
-
-      shooterCommand.execute();
+    //shooterCommand.execute();
 
     intakeCommand.execute();
     hopperCommand.execute();
