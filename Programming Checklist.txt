@@ -1,9 +1,9 @@
-tank driving
-shooting
-camera
-pid drive
-autonomous drive
-autonomous modes
-autonomous shooting
+tank driving - master
+shooting - Shooter
+camera - master
+pid drive - DavidPID
+autonomous drive - master
+autonomous modes - GabeAuto
+autonomous shooting - GabeAuto
 autonomous w/ PID
 vision tracking
