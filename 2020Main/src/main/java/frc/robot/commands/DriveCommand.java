@@ -35,7 +35,7 @@ public class DriveCommand extends Command {
     z*=Math.abs(z);
 
     double leftPower = speedscale*(z-y);
-    double rightPower = speedscale*(z-y);
+    double rightPower = speedscale*(z+y);
 
     Robot.driveSubsystem.drive(leftPower,rightPower);
   }

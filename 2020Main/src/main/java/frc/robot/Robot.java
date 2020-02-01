@@ -9,10 +9,18 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.HopperCommand;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ShooterCommand;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,11 +33,21 @@ public class Robot extends TimedRobot {
 
   //Subsystem init
   public static DriveSubsystem driveSubsystem;
+  public static ShooterSubsystem shooterSubsystem;
+  public static IntakeSubsystem intakeSubsystem;
 
   //Command init
   public static DriveCommand driveCommand;
+  public static ShooterCommand shooterCommand;
+  public static HopperCommand hopperCommand;
+  public static IntakeCommand intakeCommand;
+  public static AutonomousCommand autonomousCommand;
 
+//OI init
   public static OI oi;
+
+  //ultrasonic init
+  Ultrasonic ultrasonic = new Ultrasonic(1,2);
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
@@ -44,8 +62,15 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 
     driveSubsystem = new DriveSubsystem();
+    shooterSubsystem = new ShooterSubsystem();
+    intakeSubsystem = new IntakeSubsystem();
 
     driveCommand = new DriveCommand();
+    shooterCommand = new ShooterCommand();
+    hopperCommand = new HopperCommand();
+    intakeCommand = new IntakeCommand();
+    autonomousCommand = new AutonomousCommand();
+
 
     CameraServer.getInstance().startAutomaticCapture();
 
@@ -54,6 +79,11 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
 
     oi = new OI();
+
+    //sets the ultrasonic to auto
+    ultrasonic.setAutomaticMode(true);
+
+    SmartDashboard.putNumber("Distance Sensor",ultrasonic.getRangeInches());
   }
 
   /**
@@ -82,7 +112,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+    m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
   }
 
@@ -91,7 +121,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-
+    hopperCommand.execute();
+    autonomousCommand.execute();
   }
 
   /**
@@ -100,6 +131,11 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     driveCommand.execute();
+    if(OI.shootButton.get()){
+      shooterCommand.execute();
+    }
+    intakeCommand.execute();
+    hopperCommand.execute();
   }
 
   /**
