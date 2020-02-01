@@ -19,10 +19,15 @@ public class OI{
 
         hopperButton.toggleWhenPressed(new HopperCommand());
 
-        shootButton = new JoystickButton(driveStick, 1);
-        shootButton.whenPressed(new ShooterCommand());
-        shootButton.whenReleased(new CeasefireCommand());
+        if(driveStick.getRawButton(1)){
+            if(!RobotMap.SHOOTING){
+                Robot.shooterCommand.execute();
+            }else{
+                Robot.ceasefireCommand.execute();
+            }
+        }
 
+        
         //start of intake button code
         ///*change to private*/boolean intakeState = false;
         //
