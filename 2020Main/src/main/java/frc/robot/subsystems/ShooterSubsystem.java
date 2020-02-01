@@ -35,7 +35,7 @@ public class ShooterSubsystem extends Subsystem {
   public void shoot(double spd){
 
   shooterTopTalon.set(spd);
-  shooterBotTalon.set(-(spd+0.40));
+  shooterBotTalon.set(-(spd+0.25));
   }
 
 }
