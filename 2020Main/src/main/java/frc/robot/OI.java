@@ -22,8 +22,10 @@ public class OI{
         if(driveStick.getRawButton(1)){
             if(!RobotMap.SHOOTING){
                 Robot.shooterCommand.execute();
+                RobotMap.SHOOTING = true;
             }else{
                 Robot.ceasefireCommand.execute();
+                RobotMap.SHOOTING = true;
             }
         }
 
