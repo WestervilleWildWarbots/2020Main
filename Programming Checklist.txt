@@ -8,3 +8,5 @@ autonomous modes - GabeAuto
 autonomous shooting - GabeAuto
 autonomous w/ PID
 vision tracking
+shooter PID
+autonomous w/ shooter and drive PID
