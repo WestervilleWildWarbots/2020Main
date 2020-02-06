@@ -16,11 +16,13 @@ public class DriveSubsystem extends Subsystem {
   public double Lp = 0.1;
   public double Li = 0.1;
   public double Ld = 0.1;
-  public double Rp = 1;
-  public double Ri = 1;
-  public double Rd = 1;
-  private edu.wpi.first.wpilibj.controller.PIDController leftController = new edu.wpi.first.wpilibj.controller.PIDController(Lp,Li,Ld);
-  private edu.wpi.first.wpilibj.controller.PIDController rightController = new edu.wpi.first.wpilibj.controller.PIDController(Rp,Ri,Rd);
+  public double Lf = 0.1;
+  public double Rp = 0.1;
+  public double Ri = 0.1;
+  public double Rd = 0.1;
+  public double Rf = 0.1;
+  private edu.wpi.first.wpilibj.controller.PIDController leftController = new edu.wpi.first.wpilibj.controller.PIDController(Lp,Li,Ld,Lf);
+  private edu.wpi.first.wpilibj.controller.PIDController rightController = new edu.wpi.first.wpilibj.controller.PIDController(Rp,Ri,Rd,Rf);
 
   public DriveSubsystem() {
 
