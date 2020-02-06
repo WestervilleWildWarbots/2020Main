@@ -20,6 +20,7 @@ public class OI{
 
         hopperButton.toggleWhenPressed(new HopperCommand());
 
+        shootButton = new JoystickButton(driveStick, 1);
         
         //start of intake button code
         ///*change to private*/boolean intakeState = false;
