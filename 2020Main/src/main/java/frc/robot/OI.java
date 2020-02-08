@@ -33,10 +33,12 @@ public class OI{
     public void stickUpdate(){
         //System.out.println("updating");
 
-        if(driveStick.getRawButton(1)&&RobotMap.SHOOT_TIMER >= 25){
+        if(driveStick.getRawButton(1)&&RobotMap.SHOOT_TIMER >= 50){
             System.out.println("get button");
             RobotMap.SHOOTING = !RobotMap.SHOOTING;
             RobotMap.SHOOT_TIMER = 0;
         }
+
+        RobotMap.SHOOT_TIMER++;
     }
 }

@@ -27,13 +27,12 @@ public static double shootTime = 0;
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    System.out.print("shoot init default command");
-    shootTime =1;
+    shootTime =0;
     shooterTopTalon = new WPI_TalonSRX(RobotMap.MOTOR_ST);
     shooterBotTalon = new WPI_TalonSRX(RobotMap.MOTOR_SB);
   }
 
-  public void shoot(double spd){
+  public void shootRamp(double spd){
   
   if(shootTime <= spd*50){
     shooterTopTalon.set(2*shootTime);
@@ -50,7 +49,7 @@ public static double shootTime = 0;
 
   }
 
-  public void cease(double spd){
+  public void ceaseRamp(double spd){
     if(shootTime <= spd*50){
       shooterTopTalon.set(spd - 2*shootTime);
       shooterBotTalon.set(-spd + 2*(shootTime));
@@ -63,6 +62,16 @@ public static double shootTime = 0;
     }
   
     shootTime++;
+  }
+
+  public void shoot(double spd){
+    shooterTopTalon.set(spd);
+    shooterBotTalon.set(-(spd+0.25));
+  }
+
+  public void cease(double spd){
+    shooterTopTalon.set(0);
+    shooterBotTalon.set(0);
   }
 
 }
