@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -47,7 +48,10 @@ public class Robot extends TimedRobot {
   public static OI oi;
 
   //ultrasonic init
-  Ultrasonic ultrasonic = new Ultrasonic(1,2);
+  public static AnalogInput balDist = new AnalogInput(RobotMap.BAL_DIST_SENSOR);
+  public static AnalogInput flDist = new AnalogInput(RobotMap.FL_DIST_SENSOR);
+  public static AnalogInput frDist = new AnalogInput(RobotMap.FR_DIST_SENSOR);
+  public static AnalogInput brDist = new AnalogInput(RobotMap.BR_DIST_SENSOR);
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
