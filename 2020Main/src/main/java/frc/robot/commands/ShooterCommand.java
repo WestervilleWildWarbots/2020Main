@@ -25,7 +25,6 @@ public class ShooterCommand extends Command {
   @Override
   public void execute() {
     System.out.println("shooting");
-    RobotMap.SHOOT_TIMER++;
     
     System.out.println(RobotMap.SHOOT_TIMER);
 

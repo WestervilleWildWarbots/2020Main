@@ -1,11 +1,8 @@
 package frc.robot;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.CeasefireCommand;
 import frc.robot.commands.HopperCommand;
 import frc.robot.commands.IntakeCommand;
-import frc.robot.commands.ShooterCommand;
 
 public class OI{
 
