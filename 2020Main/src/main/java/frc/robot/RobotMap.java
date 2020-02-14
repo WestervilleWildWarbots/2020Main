@@ -19,8 +19,16 @@ public class RobotMap{
     public static final int MOTOR_HOPPER = 31;
     public static final int MOTOR_INTAKE = 32;
     
+<<<<<<< HEAD
     public static final int DIST_SENSOR_BAL = 0;
     public static final int DIST_SENSOR_FL = 0;
     public static final int DIST_SENSOR_FR = 0;
     public static final int DIST_SENSOR_BR = 0;
+=======
+    public static final int BAL_DIST_SENSOR = 0;
+    public static final int FL_DIST_SENSOR = 1;
+    public static final int FR_DIST_SENSOR = 2;
+    public static final int BR_DIST_SENSOR = 3;
+    
+>>>>>>> d1b41e954d12e40bf77658ee88f0eac266e1a9f9
 }
