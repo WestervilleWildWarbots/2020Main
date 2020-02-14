@@ -30,9 +30,14 @@ public class ShooterCommand extends Command {
 
     if(RobotMap.SHOOTING){
       System.out.println("actually shooting");
-    Robot.shooterSubsystem.shoot(0.30);
-    }else{
-    Robot.shooterSubsystem.cease(0.30);  
+    Robot.shooterSubsystem.shootRamp(0.30);
+
+      if(!RobotMap.INIT_SHOOT){
+        RobotMap.INIT_SHOOT = true;
+      }
+
+    }else if(RobotMap.INIT_SHOOT){
+    Robot.shooterSubsystem.ceaseRamp(0.30);  
     }
 
   }

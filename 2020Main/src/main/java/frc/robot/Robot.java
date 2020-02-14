@@ -96,7 +96,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
    // System.out.println("robot");
-   oi.stickUpdate();
   }
 
   /**
@@ -136,6 +135,7 @@ public class Robot extends TimedRobot {
     shooterCommand.execute();
     intakeCommand.execute();
     hopperCommand.execute();
+    oi.stickUpdate();
   }
 
   /**
