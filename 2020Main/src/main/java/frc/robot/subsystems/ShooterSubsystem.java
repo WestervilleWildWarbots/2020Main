@@ -33,13 +33,13 @@ public static double shootTime = 0;
   }
 
   public void shootRamp(double spd){
-  
-  if(shootTime <= spd*50){
-    shooterTopTalon.set(2*shootTime);
-    shooterBotTalon.set(-2*(shootTime));
-  }else if(shootTime <= (spd+0.25)*50){
-    shooterTopTalon.set(spd);
-    shooterBotTalon.set(-2*(shootTime));
+
+  if(shootTime <= spd*500){
+    shooterTopTalon.set(.002*shootTime);
+    shooterBotTalon.set(-(.55/.3)*.002*(shootTime));
+
+    RobotMap.SAVE_SPEED = .002*shootTime;
+
   }else{
     shooterTopTalon.set(spd);
     shooterBotTalon.set(-(spd+0.25));
@@ -50,12 +50,9 @@ public static double shootTime = 0;
   }
 
   public void ceaseRamp(double spd){
-    if(shootTime <= spd*50){
-      shooterTopTalon.set(spd - 2*shootTime);
-      shooterBotTalon.set(-spd + 2*(shootTime));
-    }else if(shootTime <= (spd+0.25)*50){
-      shooterTopTalon.set(0);
-      shooterBotTalon.set(-spd + 2*(shootTime));
+    if(shootTime <= spd*500){
+      shooterTopTalon.set(spd - .002*shootTime);
+      shooterBotTalon.set(spd + -(.55/.3)*.002*(shootTime));
     }else{
       shooterTopTalon.set(0);
       shooterBotTalon.set(0);

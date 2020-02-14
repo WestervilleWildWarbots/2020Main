@@ -9,6 +9,7 @@ public class RobotMap{
     public static Boolean SHOOTING= false;
     public static Boolean INIT_SHOOT = false;
     public static double SHOOT_TIMER = 0;
+    public static double SAVE_SPEED = 0;
 
     //motor setup 
     public static final int MOTOR_FL = 11;

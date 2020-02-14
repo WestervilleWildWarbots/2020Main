@@ -3,6 +3,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.HopperCommand;
 import frc.robot.commands.IntakeCommand;
+import frc.robot.subsystems.ShooterSubsystem;
 
 public class OI{
 
@@ -34,6 +35,7 @@ public class OI{
             System.out.println("get button");
             RobotMap.SHOOTING = !RobotMap.SHOOTING;
             RobotMap.SHOOT_TIMER = 0;
+            ShooterSubsystem.shootTime =0;
         }
 
         RobotMap.SHOOT_TIMER++;

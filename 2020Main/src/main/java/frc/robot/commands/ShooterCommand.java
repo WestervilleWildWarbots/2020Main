@@ -37,7 +37,7 @@ public class ShooterCommand extends Command {
       }
 
     }else if(RobotMap.INIT_SHOOT){
-    Robot.shooterSubsystem.ceaseRamp(0.30);  
+    Robot.shooterSubsystem.ceaseRamp(RobotMap.SAVE_SPEED);  
     }
 
   }
