@@ -10,10 +10,9 @@ package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.commands.AutoAlignCommand;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.HopperCommand;
@@ -43,13 +42,11 @@ public class Robot extends TimedRobot {
   public static HopperCommand hopperCommand;
   public static IntakeCommand intakeCommand;
   public static AutonomousCommand autonomousCommand;
-  public static AutoAlignCommand autoAlignCommand;
 
 //OI init
   public static OI oi;
 
   //ultrasonic init
-  public static AnalogInput balDist = new AnalogInput(RobotMap.BAL_DIST_SENSOR);
   public static AnalogInput flDist = new AnalogInput(RobotMap.FL_DIST_SENSOR);
   public static AnalogInput frDist = new AnalogInput(RobotMap.FR_DIST_SENSOR);
   public static AnalogInput brDist = new AnalogInput(RobotMap.BR_DIST_SENSOR);
@@ -75,7 +72,6 @@ public class Robot extends TimedRobot {
     hopperCommand = new HopperCommand();
     intakeCommand = new IntakeCommand();
     autonomousCommand = new AutonomousCommand();
-    autoAlignCommand = new AutoAlignCommand();
 
 
     CameraServer.getInstance().startAutomaticCapture();
@@ -86,6 +82,8 @@ public class Robot extends TimedRobot {
 
     oi = new OI();
 
+    //sets the ultrasonic to auto
+   
   }
 
   /**
@@ -98,6 +96,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+   // System.out.println("robot");
   }
 
   /**
@@ -133,11 +132,11 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     driveCommand.execute();
-    if(OI.shootButton.get()){
-      shooterCommand.execute();
-    }
+    //shooterCommand.execute();
+    shooterCommand.execute();
     intakeCommand.execute();
     hopperCommand.execute();
+    oi.stickUpdate();
   }
 
   /**

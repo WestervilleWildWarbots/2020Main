@@ -9,10 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class ShooterCommand extends Command {
   public ShooterCommand() {
-    requires(Robot.shooterSubsystem);
+    System.out.println("reached Shooter");
   }
 
   // Called just before this Command runs the first time
@@ -23,8 +24,21 @@ public class ShooterCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
+    System.out.println("shooting");
+    
+    System.out.println(RobotMap.SHOOT_TIMER);
 
-    Robot.shooterSubsystem.shoot(1);
+    if(RobotMap.SHOOTING){
+      System.out.println("actually shooting");
+    Robot.shooterSubsystem.shootRamp(0.30);
+
+      if(!RobotMap.INIT_SHOOT){
+        RobotMap.INIT_SHOOT = true;
+      }
+
+    }else if(RobotMap.INIT_SHOOT){
+    Robot.shooterSubsystem.ceaseRamp(RobotMap.SAVE_SPEED);  
+    }
 
   }
 

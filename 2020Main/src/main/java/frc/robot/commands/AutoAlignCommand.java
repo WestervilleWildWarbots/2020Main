@@ -31,10 +31,11 @@ public class AutoAlignCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putNumber("Ball Check Distance", getVolt(Robot.balDist));
+ 
     SmartDashboard.putNumber("Front Left Distance", getVolt(Robot.flDist));
     SmartDashboard.putNumber("Front Right Distance", getVolt(Robot.frDist));
     SmartDashboard.putNumber("Back Right Distance", getVolt(Robot.brDist));
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
