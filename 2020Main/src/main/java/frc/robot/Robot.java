@@ -10,10 +10,10 @@ package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.commands.AutoAlignCommand;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.HopperCommand;
@@ -43,6 +43,7 @@ public class Robot extends TimedRobot {
   public static HopperCommand hopperCommand;
   public static IntakeCommand intakeCommand;
   public static AutonomousCommand autonomousCommand;
+  public static AutoAlignCommand autoAlignCommand;
 
 //OI init
   public static OI oi;
@@ -74,6 +75,7 @@ public class Robot extends TimedRobot {
     hopperCommand = new HopperCommand();
     intakeCommand = new IntakeCommand();
     autonomousCommand = new AutonomousCommand();
+    autoAlignCommand = new AutoAlignCommand();
 
 
     CameraServer.getInstance().startAutomaticCapture();
@@ -84,10 +86,6 @@ public class Robot extends TimedRobot {
 
     oi = new OI();
 
-    //sets the ultrasonic to auto
-    ultrasonic.setAutomaticMode(true);
-
-    SmartDashboard.putNumber("Distance Sensor",ultrasonic.getRangeInches());
   }
 
   /**
