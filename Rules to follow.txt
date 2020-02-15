@@ -1,3 +1,5 @@
+Don't touch Main
+
 Remote branch for featurs
 
 Always merge master into remote branch before a pull request
@@ -12,7 +14,9 @@ Have a descriptive message about what has changed or updated in a branch
 
 Ethan has to accept/reject pull request before and after meetings
 
+Don't touch Main
 
+Don't touch Main
 
 Never push to master
 
@@ -21,3 +25,5 @@ send a pull request to master once the branch feature is working
 Ethan merges everything
 
 Anything breaks in master it is Ethan's fault
+
+And seriously, don't touch Main
