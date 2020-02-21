@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.revrobotics.AlternateEncoderType;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.EncoderType;
@@ -23,7 +24,7 @@ public class DriveSubsystem extends Subsystem {
     frontRight = new CANSparkMax(RobotMap.MOTOR_FR,MotorType.kBrushless);
     backLeft = new CANSparkMax(RobotMap.MOTOR_BL,MotorType.kBrushless);
     backRight = new CANSparkMax(RobotMap.MOTOR_BR,MotorType.kBrushless);
-    flEnc = new CANEncoder(frontLeft, EncoderType.kHallSensor, 1);
+    flEnc = frontLeft.getEncoder();
     frontRight.setInverted(true);
     backLeft.follow(frontLeft);    
     backRight.follow(frontRight);

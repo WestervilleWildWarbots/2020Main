@@ -4,7 +4,7 @@ import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class AutonomousCommand extends Command {
-    private int timer;
+    public int timer;
   public AutonomousCommand() {
     requires(Robot.driveSubsystem);
      
@@ -12,17 +12,16 @@ public class AutonomousCommand extends Command {
 
   @Override
   protected void initialize() {
-    int timer = 0;//sets the timer to 0
-    Robot.driveSubsystem.flEnc.setPosition(0);
   }
 
   @Override
   public void execute() {
     System.out.println(Robot.choice);//prints out the auto mode choice
-    System.out.println(Robot.driveSubsystem.frontLeft.getEncoder().getPosition());
+    System.out.println(Robot.driveSubsystem.flEnc.getPosition());
+    System.out.println(timer);
 
     if(Robot.choice == "one"){
-      if(Robot.driveSubsystem.frontLeft.getEncoder().getPosition() <= 1.5){
+      if(Robot.driveSubsystem.flEnc.getPosition() <= 1.5){
         Robot.driveSubsystem.drive(0.25, 0.25);
       }
       else{

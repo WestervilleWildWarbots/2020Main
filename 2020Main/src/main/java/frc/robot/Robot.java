@@ -67,6 +67,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    
 
     driveSubsystem = new DriveSubsystem();
     shooterSubsystem = new ShooterSubsystem();
@@ -82,7 +83,8 @@ public class Robot extends TimedRobot {
 
     CameraServer.getInstance().startAutomaticCapture();
 
-    
+    autonomousCommand.timer =0;
+    driveSubsystem.flEnc.setPosition(0);
 
     oi = new OI();
 
