@@ -1,10 +1,11 @@
 tank driving - master
-shooting - Shooter
-shooting toggle - Shooter
-camera - master
-pid drive - DavidPID
+shooting accelerating and deccelerating on a button - Shooter
+cameras - master
+drive PID - DavidPID
 autonomous drive - master
 autonomous modes - GabeAuto
 autonomous shooting - GabeAuto
 autonomous w/ PID
 vision tracking
+shooter PID
+autonomous w/ shooter and drive PID

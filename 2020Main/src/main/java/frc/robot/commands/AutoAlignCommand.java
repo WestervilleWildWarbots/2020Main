@@ -7,13 +7,21 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class ShooterCommand extends Command {
-  public ShooterCommand() {
-    System.out.println("reached Shooter");
+public class AutoAlignCommand extends Command {
+
+  public AutoAlignCommand() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+  }
+
+  public double getDist(AnalogInput ainp){
+    return ainp.getVoltage();
   }
 
   // Called just before this Command runs the first time
@@ -23,22 +31,11 @@ public class ShooterCommand extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  public void execute() {
-    System.out.println("shooting");
-    
-    System.out.println(RobotMap.SHOOT_TIMER);
-
-    if(RobotMap.SHOOTING){
-      System.out.println("actually shooting");
-    Robot.shooterSubsystem.shootRamp(0.30);
-
-      if(!RobotMap.INIT_SHOOT){
-        RobotMap.INIT_SHOOT = true;
-      }
-
-    }else if(RobotMap.INIT_SHOOT){
-    Robot.shooterSubsystem.ceaseRamp(RobotMap.SAVE_SPEED);  
-    }
+public void execute() {
+ 
+    SmartDashboard.putNumber("Front Left Distance", getDist(Robot.flDist));
+    SmartDashboard.putNumber("Front Right Distance", getDist(Robot.frDist));
+    SmartDashboard.putNumber("Back Right Distance", getDist(Robot.brDist));
 
   }
 
