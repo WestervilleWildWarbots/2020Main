@@ -5,6 +5,7 @@ drive PID - DavidPID
 autonomous drive - master
 autonomous modes - GabeAuto
 autonomous shooting - GabeAuto
+finalize pulley code
 autonomous w/ PID
 vision tracking
 shooter PID
