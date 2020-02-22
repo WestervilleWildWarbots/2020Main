@@ -18,7 +18,7 @@ public class IntakeCommand extends Command {
 
   @Override
   public void execute() {
-    //Robot.intakeSubsystem.intakeSpin(1);
+    Robot.intakeSubsystem.intakeSpin(1);
   }
 
   @Override

@@ -37,7 +37,7 @@ public class DriveCommand extends Command {
     double leftPower = speedscale*(z-y);
     double rightPower = speedscale*(z+y);
 
-    //Robot.driveSubsystem.drive(leftPower, rightPower);
+    Robot.driveSubsystem.drive(leftPower, rightPower);
   }
 
   @Override

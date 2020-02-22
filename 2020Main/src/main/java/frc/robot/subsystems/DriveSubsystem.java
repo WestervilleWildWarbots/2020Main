@@ -15,10 +15,10 @@ public class DriveSubsystem extends Subsystem {
 
   public DriveSubsystem() {
 
-    //frontLeft = new CANSparkMax(RobotMap.MOTOR_FL,MotorType.kBrushless );
-   // frontRight = new CANSparkMax(RobotMap.MOTOR_FR,MotorType.kBrushless);
-   // backLeft = new CANSparkMax(RobotMap.MOTOR_BL,MotorType.kBrushless);
-   // backRight = new CANSparkMax(RobotMap.MOTOR_BR,MotorType.kBrushless);
+    frontLeft = new CANSparkMax(RobotMap.MOTOR_FL,MotorType.kBrushless );
+    frontRight = new CANSparkMax(RobotMap.MOTOR_FR,MotorType.kBrushless);
+    backLeft = new CANSparkMax(RobotMap.MOTOR_BL,MotorType.kBrushless);
+    backRight = new CANSparkMax(RobotMap.MOTOR_BR,MotorType.kBrushless);
         
   }
 
@@ -32,8 +32,8 @@ public class DriveSubsystem extends Subsystem {
     System.out.println(leftSpeed);
     System.out.println(rightSpeed);
 
-    //frontLeft.set(leftSpeed);
-    //backRight.set(rightSpeed);
+    frontLeft.set(leftSpeed);
+    backRight.set(rightSpeed);
   }
 
   
