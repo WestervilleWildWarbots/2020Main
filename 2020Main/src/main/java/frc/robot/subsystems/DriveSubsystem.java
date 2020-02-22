@@ -18,6 +18,7 @@ public class DriveSubsystem extends Subsystem {
   public CANSparkMax backRight;
   
   public CANEncoder flEnc;
+  public CANEncoder frEnc;
 
   public double Lp = 0.1;
   public double Li = 0;
@@ -35,6 +36,7 @@ public class DriveSubsystem extends Subsystem {
     backLeft = new CANSparkMax(RobotMap.MOTOR_BL,MotorType.kBrushless);
     backRight = new CANSparkMax(RobotMap.MOTOR_BR,MotorType.kBrushless);
     flEnc = frontLeft.getEncoder();
+    frEnc = frontRight.getEncoder();
     
     frontRight.setInverted(true);
     backLeft.follow(frontLeft);    
@@ -57,7 +59,7 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public void drive(double leftSpeed, double rightSpeed){
-    frontLeft.set(leftController.calculate(leftSpeed));
-    frontRight.set(rightController.calculate(rightSpeed));
+    frontLeft.set(leftController.calculate(flEnc.getVelocity()));
+    frontRight.set(rightController.calculate(frEnc.getVelocity()));
   }
 }
