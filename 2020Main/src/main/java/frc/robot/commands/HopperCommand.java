@@ -16,11 +16,14 @@ public class HopperCommand extends Command {
 
   @Override
 public void execute() {
-  if(RobotMap.HOPPING){
-    System.out.println("actually shooting");
-  Robot.intakeSubsystem.hopperSpin(0.30);
 
-  }else if(RobotMap.INIT_SHOOT){
+  System.out.println(RobotMap.SHOOT_TIMER);
+
+  if(RobotMap.HOPPING){
+    System.out.println("actually hopping");
+  Robot.intakeSubsystem.hopperSpin(-0.25);
+
+  }else{
   Robot.intakeSubsystem.hopperCease();  
   }
   }

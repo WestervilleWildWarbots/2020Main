@@ -24,12 +24,10 @@ public class ShooterCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
-    System.out.println("shooting");
-    
-    System.out.println(RobotMap.SHOOT_TIMER);
+    //System.out.println("shooting");
 
     if(RobotMap.SHOOTING){
-      System.out.println("actually shooting");
+     // System.out.println("actually shooting");
     Robot.shooterSubsystem.shootRamp(0.30);
 
       if(!RobotMap.INIT_SHOOT){

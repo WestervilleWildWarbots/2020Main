@@ -11,7 +11,7 @@ public class IntakeSubsystem extends Subsystem {
   TalonSRX intakeTalon;
 
   public IntakeSubsystem() {
-    //hopperTalon = new TalonSRX(RobotMap.MOTOR_HOPPER);
+    hopperTalon = new TalonSRX(RobotMap.MOTOR_HOPPER);
     //intakeTalon = new TalonSRX(RobotMap.MOTOR_INTAKE);
   } 
 

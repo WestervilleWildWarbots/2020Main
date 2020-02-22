@@ -25,8 +25,8 @@ public class RobotMap{
     public static final int MOTOR_SB = 32;
     
     
-    public static final int MOTOR_HOPPER = 31;
-    //public static final int MOTOR_INTAKE = 32;
+    public static final int MOTOR_HOPPER = 41;
+    //public static final int MOTOR_INTAKE = 42;
 
     public static final int FL_DIST_SENSOR = 1;
     public static final int FR_DIST_SENSOR = 2;
