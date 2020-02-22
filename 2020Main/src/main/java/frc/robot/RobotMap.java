@@ -8,7 +8,10 @@ public class RobotMap{
     //command booleans
     public static Boolean SHOOTING= false;
     public static Boolean INIT_SHOOT = false;
+    public static Boolean HOPPING = false;
+
     public static double SHOOT_TIMER = 0;
+    public static double HOPPER_TIMER = 0;
     public static double SAVE_SPEED = 0;
 
     //motor setup 
@@ -22,7 +25,7 @@ public class RobotMap{
     public static final int MOTOR_SB = 32;
     
     
-    //public static final int MOTOR_HOPPER = 31;
+    public static final int MOTOR_HOPPER = 31;
     //public static final int MOTOR_INTAKE = 32;
 
     public static final int FL_DIST_SENSOR = 1;
