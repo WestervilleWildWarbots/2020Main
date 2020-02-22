@@ -18,6 +18,7 @@ import frc.robot.RobotMap;
 public class ShooterSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+public static double shootTime = 0;
 
   private static WPI_TalonSRX shooterTopTalon;
   private static WPI_TalonSRX shooterBotTalon;
@@ -26,18 +27,48 @@ public class ShooterSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-
+    shootTime =0;
     shooterTopTalon = new WPI_TalonSRX(RobotMap.MOTOR_ST);
     shooterBotTalon = new WPI_TalonSRX(RobotMap.MOTOR_SB);
+  }
 
-    shooterBotTalon.follow(shooterTopTalon);
+  public void shootRamp(double spd){
+
+  if(shootTime <= spd*500){
+    shooterTopTalon.set(.002*shootTime);
+    shooterBotTalon.set(-(.55/.3)*.002*(shootTime));
+
+    RobotMap.SAVE_SPEED = .002*shootTime;
+
+  }else{
+    shooterTopTalon.set(spd);
+    shooterBotTalon.set(-(spd+0.25));
+  }
+
+  shootTime++;
 
   }
 
-  public void shoot(double spd){
+  public void ceaseRamp(double spd){
+    if(shootTime <= spd*500){
+      shooterTopTalon.set(spd - .002*shootTime);
+      shooterBotTalon.set(spd + -(.55/.3)*.002*(shootTime));
+    }else{
+      shooterTopTalon.set(0);
+      shooterBotTalon.set(0);
+    }
+  
+    shootTime++;
+  }
 
+  public void shoot(double spd){
     shooterTopTalon.set(spd);
-    
+    shooterBotTalon.set(-(spd+0.25));
+  }
+
+  public void cease(double spd){
+    shooterTopTalon.set(0);
+    shooterBotTalon.set(0);
   }
 
 }
