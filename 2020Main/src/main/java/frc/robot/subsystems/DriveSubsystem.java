@@ -20,6 +20,13 @@ public class DriveSubsystem extends Subsystem {
     backLeft = new CANSparkMax(RobotMap.MOTOR_BL,MotorType.kBrushless);
     backRight = new CANSparkMax(RobotMap.MOTOR_BR,MotorType.kBrushless);
         
+    frontRight.setInverted(true);
+    backLeft.follow(frontLeft);    
+    backRight.follow(frontRight);
+
+    backLeft.close();
+    backRight.close();
+
   }
 
   @Override
@@ -33,7 +40,7 @@ public class DriveSubsystem extends Subsystem {
     System.out.println(rightSpeed);
 
     frontLeft.set(leftSpeed);
-    backRight.set(rightSpeed);
+    frontRight.set(rightSpeed);
   }
 
   
