@@ -23,7 +23,7 @@ public class AutonomousCommand extends Command {
     System.out.println(timer);
 
     if(Robot.choice == "one"){
-      if(Robot.driveSubsystem.flEnc.getPosition() <= 1.5){
+      if(Robot.driveSubsystem.flEnc.getPosition() <= 10){
         Robot.driveSubsystem.drive(0.25, 0.25);
       }
       else{
@@ -32,7 +32,7 @@ public class AutonomousCommand extends Command {
     }
 
     if(Robot.choice == "two"){
-      if(Robot.driveSubsystem.flEnc.getPosition() <= 5.1){
+      if(Robot.driveSubsystem.flEnc.getPosition() <= 50){
         Robot.driveSubsystem.drive(0.25, 0.25);
       }
       else if(timer <=400){
