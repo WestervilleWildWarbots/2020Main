@@ -44,7 +44,15 @@ public class OI{
             RobotMap.HOPPER_TIMER= 0;
         }
 
+        if(driveStick.getRawButton(4)&&RobotMap.HOPPER_TIMER >= 50){
+            System.out.println("get button");
+            RobotMap.HOPPING = false;
+            RobotMap.CLOGGING = !RobotMap.CLOGGING;
+            RobotMap.HOPPER_TIMER= 0;
+        }
+
         RobotMap.SHOOT_TIMER++;
         RobotMap.HOPPER_TIMER++;
     }
+    
 }

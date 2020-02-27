@@ -28,6 +28,10 @@ public class IntakeSubsystem extends Subsystem {
     hopperTalon.set(ControlMode.PercentOutput, 0);
 }
 
+public void hopperUnstick(double speed){
+      hopperTalon.set(ControlMode.PercentOutput, speed);
+}
+
 
   public void intakeSpin(double speed){
     //intakeTalon.set(ControlMode.PercentOutput, speed);
