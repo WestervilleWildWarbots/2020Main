@@ -1,6 +1,8 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
+import frc.robot.RobotMap;
+import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class AutonomousCommand extends Command {
@@ -30,13 +32,16 @@ public class AutonomousCommand extends Command {
     }
 
     if(Robot.choice == "two"){
-      if(Robot.driveSubsystem.frontLeft.getEncoder().getPosition() <= 5.1){
+      if(Robot.driveSubsystem.flEnc.getPosition() <= 5.1){
         Robot.driveSubsystem.drive(0.25, 0.25);
       }
       else if(timer <=250){
         timer++;
         Robot.driveSubsystem.drive(0, 0);
         Robot.shooterSubsystem.shootRamp(0.30);
+      }else if(timer == 251){
+        ShooterSubsystem.shootTime=0;
+        timer++;
       }else{
         Robot.shooterSubsystem.ceaseRamp(0.30);
       }

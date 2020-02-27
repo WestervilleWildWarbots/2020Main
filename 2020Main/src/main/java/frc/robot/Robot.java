@@ -84,7 +84,6 @@ public class Robot extends TimedRobot {
     CameraServer.getInstance().startAutomaticCapture();
 
     autonomousCommand.timer =0;
-    driveSubsystem.flEnc.setPosition(0);
 
     oi = new OI();
 
@@ -124,6 +123,9 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("auto mode 2", "two");
     SmartDashboard.putData("Autonomous mode options", m_chooser);
     System.out.println("Auto selected: " + m_autoSelected);
+
+    driveSubsystem.flEnc.setPosition(0);
+    autonomousCommand.timer = 0;
   }
 
   /**
