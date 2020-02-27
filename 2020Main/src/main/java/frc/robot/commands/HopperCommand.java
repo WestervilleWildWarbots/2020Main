@@ -21,7 +21,7 @@ public void execute() {
 
   if(RobotMap.HOPPING){
     System.out.println("actually hopping");
-  Robot.intakeSubsystem.hopperSpin(-0.25);
+  Robot.intakeSubsystem.hopperSpin(-0.50);
 
   }else{
   Robot.intakeSubsystem.hopperCease();  
