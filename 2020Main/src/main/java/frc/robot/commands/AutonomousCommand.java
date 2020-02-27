@@ -35,12 +35,16 @@ public class AutonomousCommand extends Command {
       if(Robot.driveSubsystem.flEnc.getPosition() <= 5.1){
         Robot.driveSubsystem.drive(0.25, 0.25);
       }
-      else if(timer <=250){
+      else if(timer <=400){
         timer++;
         Robot.driveSubsystem.drive(0, 0);
+        if(timer >50){
+        RobotMap.HOPPING=true;
+        }
         Robot.shooterSubsystem.shootRamp(0.30);
-      }else if(timer == 251){
+      }else if(timer == 401){
         ShooterSubsystem.shootTime=0;
+        RobotMap.HOPPING=false;
         timer++;
       }else{
         Robot.shooterSubsystem.ceaseRamp(0.30);

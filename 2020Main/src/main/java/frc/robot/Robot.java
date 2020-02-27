@@ -119,7 +119,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_chooser.setDefaultOption("auto mode 1", "one");
+    m_chooser.setDefaultOption("auto mode 2", "two");
     m_chooser.addOption("auto mode 2", "two");
     SmartDashboard.putData("Autonomous mode options", m_chooser);
     System.out.println("Auto selected: " + m_autoSelected);
