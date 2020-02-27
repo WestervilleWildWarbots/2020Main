@@ -20,12 +20,12 @@ public class DriveSubsystem extends Subsystem {
   public CANEncoder flEnc;
   public CANEncoder frEnc;
 
-  public double Lp = 0.5;
-  public double Li = 0.05;
-  public double Ld = 0;
-  public double Rp = 0.5;
-  public double Ri = 0.05;
-  public double Rd = 0;
+  public double Lp = 0.75;
+  public double Li = 0.005;
+  public double Ld = 0.0;
+  public double Rp = 0.75;
+  public double Ri = 0.005;
+  public double Rd = 0.0;
   private edu.wpi.first.wpilibj.controller.PIDController leftController = new edu.wpi.first.wpilibj.controller.PIDController(Lp,Li,Ld);
   private edu.wpi.first.wpilibj.controller.PIDController rightController = new edu.wpi.first.wpilibj.controller.PIDController(Rp,Ri,Rd);
 
