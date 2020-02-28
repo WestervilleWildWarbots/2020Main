@@ -7,8 +7,8 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
@@ -20,8 +20,8 @@ public class AutoAlignCommand extends Command {
     // eg. requires(chassis);
   }
 
-  public double getDist(AnalogInput ainp){
-    return ainp.getVoltage();
+  public double getDist(AnalogPotentiometer ainp){
+    return ainp.get();
   }
 
   // Called just before this Command runs the first time
@@ -33,9 +33,9 @@ public class AutoAlignCommand extends Command {
   @Override
 public void execute() {
  
-    SmartDashboard.putNumber("Front Left Distance", getDist(Robot.flDist));
-    SmartDashboard.putNumber("Front Right Distance", getDist(Robot.frDist));
-    SmartDashboard.putNumber("Back Right Distance", getDist(Robot.brDist));
+    SmartDashboard.putNumber("Front Left Distance", (512/2.54)*getDist(Robot.flDist));
+    SmartDashboard.putNumber("Front Right Distance", (512/2.54)*getDist(Robot.frDist));
+    SmartDashboard.putNumber("Back Right Distance", (512/2.54)*getDist(Robot.brDist));
 
   }
 
