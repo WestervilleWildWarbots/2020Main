@@ -82,6 +82,7 @@ public class Robot extends TimedRobot {
 
 
     CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture();
 
     autonomousCommand.timer =0;
 
@@ -102,7 +103,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
    // System.out.println("robot");
-
    choice = m_chooser.getSelected();
   }
 

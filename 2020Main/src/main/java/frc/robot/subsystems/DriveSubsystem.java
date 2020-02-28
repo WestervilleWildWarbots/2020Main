@@ -38,7 +38,9 @@ public class DriveSubsystem extends Subsystem {
   public void initDefaultCommand(){
 
   }
-
+  public void getGyros() {
+    
+  }
     //Basic Drive Method
   public void drive(double leftSpeed, double rightSpeed) {
     System.out.println(leftSpeed);
