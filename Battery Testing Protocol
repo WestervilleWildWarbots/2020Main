@@ -1,5 +1,5 @@
 Put 5 batteries on cart
 Tie cart to back of robot with rope
-Drag it forward and back down the hallway for 1 minute
-Read battery voltage each minute
+Drag it forward and back down the hallway for one minute
+Read battery voltage each second
 Print out readings to console and table it on smart dashboard as well as in a file
