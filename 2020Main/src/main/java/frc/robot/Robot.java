@@ -108,6 +108,8 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
    // System.out.println("robot");
    choice = m_chooser.getSelected();
+
+   voltageTestCommand.execute();
   }
 
   /**
