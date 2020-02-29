@@ -14,10 +14,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class AutoAlignCommand extends Command {
-
+  public static Boolean aligned;
   public AutoAlignCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    
   }
 
   public double getDist(AnalogPotentiometer ainp){
@@ -38,6 +39,13 @@ public void execute() {
     SmartDashboard.putNumber("Back Right Distance", (512/2.54)*getDist(Robot.brDist));
     SmartDashboard.putNumber("Ball Distance", (512/2.54)*getDist(Robot.balDist));
 
+    if(getDist(Robot.flDist) == getDist(Robot.frDist) && getDist(Robot.flDist) == 15.5){
+      aligned =true;
+      
+    }else{
+      aligned = false;
+    }
+    SmartDashboard.putBoolean("Aligned",aligned );
   }
 
   // Make this return true when this Command no longer needs to run execute()
