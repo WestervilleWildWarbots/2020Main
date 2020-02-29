@@ -6,6 +6,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.EncoderType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -17,6 +18,8 @@ public class DriveSubsystem extends Subsystem {
   public CANSparkMax backRight;
   
   public CANEncoder flEnc;
+
+  private static AnalogGyro RioGyro = new AnalogGyro(RobotMap.GYRO);
 
   public DriveSubsystem() {
 
@@ -50,5 +53,7 @@ public class DriveSubsystem extends Subsystem {
     frontRight.set(rightSpeed);
   }
 
-  
+  public static double getGyro(){
+    return RioGyro.getAngle();
+}
 }
