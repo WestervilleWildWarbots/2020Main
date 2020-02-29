@@ -23,6 +23,9 @@ public class DriveSubsystem extends Subsystem {
 
   public DriveSubsystem() {
 
+    RioGyro.initGyro();
+		RioGyro.calibrate();
+
     frontLeft = new CANSparkMax(RobotMap.MOTOR_FL,MotorType.kBrushless );
     frontRight = new CANSparkMax(RobotMap.MOTOR_FR,MotorType.kBrushless);
     backLeft = new CANSparkMax(RobotMap.MOTOR_BL,MotorType.kBrushless);
