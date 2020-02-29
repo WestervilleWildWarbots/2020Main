@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
   public static HopperCommand hopperCommand;
   public static IntakeCommand intakeCommand;
   public static AutonomousCommand autonomousCommand;
-  public static AutoAlignCommand autoAligncommand;
+  public static AutoAlignCommand autoAlignCommand;
 
 //OI init
   public static OI oi;
@@ -79,7 +79,7 @@ public class Robot extends TimedRobot {
     hopperCommand = new HopperCommand();
     intakeCommand = new IntakeCommand();
     autonomousCommand = new AutonomousCommand();
-    autoAligncommand = new AutoAlignCommand();
+    autoAlignCommand = new AutoAlignCommand();
 
 
     CameraServer.getInstance().startAutomaticCapture();
@@ -148,7 +148,7 @@ public class Robot extends TimedRobot {
     intakeCommand.execute();
     hopperCommand.execute();
     oi.stickUpdate();
-    autoAligncommand.execute();
+    autoAlignCommand.execute();
   }
 
   /**

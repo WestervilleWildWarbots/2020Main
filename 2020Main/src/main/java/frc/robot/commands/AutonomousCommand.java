@@ -3,13 +3,13 @@ package frc.robot.commands;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.commands.AutoAlignCommand;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class AutonomousCommand extends Command {
     public int timer;
   public AutonomousCommand() {
     requires(Robot.driveSubsystem);
-     
   }
 
   @Override
@@ -32,7 +32,7 @@ public class AutonomousCommand extends Command {
     }
 
     if(Robot.choice == "two"){
-      if(Robot.driveSubsystem.flEnc.getPosition() <= 50){
+      if(Robot.autoAlignCommand.getDist(Robot.flDist) <= 15){
         Robot.driveSubsystem.drive(0.25, 0.25);
       }
       else if(timer <=400){
