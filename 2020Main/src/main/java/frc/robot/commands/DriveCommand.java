@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveCommand extends Command {
-
+  public double rotations = 0;
   public DriveCommand() {
     requires(Robot.driveSubsystem);
   }
@@ -40,7 +40,8 @@ public class DriveCommand extends Command {
     double rightPower = speedscale*-(z+y);
 
     Robot.driveSubsystem.drive(leftPower, rightPower);
-    SmartDashboard.putNumber("Gyroscope",Robot.driveSubsystem.getGyro());
+    rotations = Math.floor(Robot.driveSubsystem.getGyro());
+    SmartDashboard.putNumber("Gyroscope",(360*Robot.driveSubsystem.getGyro())-360*rotations);
   }
 
   @Override

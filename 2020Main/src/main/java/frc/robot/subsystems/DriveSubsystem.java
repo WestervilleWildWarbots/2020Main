@@ -57,6 +57,6 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public double getGyro(){
-    return 0;//RioGyro.getAngle()
+    return RioGyro.getAngle();
 }
 }
