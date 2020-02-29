@@ -20,7 +20,7 @@ public class DriveCommand extends Command {
   public void execute() {
     final double speedscale = 0.5;
     final double deadzoneY = 0.15;
-    final double deadzoneZ = 0.35;   
+    final double deadzoneZ = 0.55;   
 
     double y = OI.driveStick.getY();
     double z = OI.driveStick.getZ();

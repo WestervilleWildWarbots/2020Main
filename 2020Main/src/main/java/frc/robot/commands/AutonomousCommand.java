@@ -32,7 +32,7 @@ public class AutonomousCommand extends Command {
     }
 
     if(Robot.choice == "two"){
-      if(Robot.autoAlignCommand.getDist(Robot.flDist) <= 15){
+      if(Robot.autoAlignCommand.getDist(Robot.flDist) <= 25||Robot.autoAlignCommand.getDist(Robot.frDist) <= 25){
         Robot.driveSubsystem.drive(0.25, 0.25);
       }
       else if(timer <=400){

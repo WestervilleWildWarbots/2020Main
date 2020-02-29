@@ -19,7 +19,7 @@ public class DriveSubsystem extends Subsystem {
   
   public CANEncoder flEnc;
 
-  private static AnalogGyro RioGyro = new AnalogGyro(RobotMap.GYRO);
+  //private static AnalogGyro RioGyro = new AnalogGyro(RobotMap.GYRO);
 
   public DriveSubsystem() {
 
@@ -54,6 +54,6 @@ public class DriveSubsystem extends Subsystem {
   }
 
   public double getGyro(){
-    return RioGyro.getAngle();
+    return 0;//RioGyro.getAngle()
 }
 }

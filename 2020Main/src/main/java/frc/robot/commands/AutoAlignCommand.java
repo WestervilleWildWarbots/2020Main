@@ -39,7 +39,7 @@ public void execute() {
     SmartDashboard.putNumber("Back Right Distance", (512/2.54)*getDist(Robot.brDist));
     SmartDashboard.putNumber("Ball Distance", (512/2.54)*getDist(Robot.balDist));
 
-    if(getDist(Robot.flDist) == getDist(Robot.frDist) && getDist(Robot.flDist) == 15.5){
+    if(getDist(Robot.flDist)+5 >= getDist(Robot.frDist)&& getDist(Robot.flDist)-5 <= getDist(Robot.frDist)  && getDist(Robot.flDist) <= 15.5){
       aligned =true;
       
     }else{
