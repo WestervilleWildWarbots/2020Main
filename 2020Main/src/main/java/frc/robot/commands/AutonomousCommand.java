@@ -32,16 +32,18 @@ public class AutonomousCommand extends Command {
     }
 
     if(Robot.choice == "two"){
-      if(Robot.driveSubsystem.flEnc.getPosition() <= 50){
+      if(Robot.driveSubsystem.flEnc.getPosition() <= 10){
         Robot.driveSubsystem.drive(0.25, 0.25);
       }
       else if(timer <=400){
         timer++;
         Robot.driveSubsystem.drive(0, 0);
-        if(timer >50){
+        Robot.shooterSubsystem.shootRamp(0.30);
+        
+        if(timer > 140){
         RobotMap.HOPPING=true;
         }
-        Robot.shooterSubsystem.shootRamp(0.30);
+
       }else if(timer == 401){
         ShooterSubsystem.shootTime=0;
         RobotMap.HOPPING=false;

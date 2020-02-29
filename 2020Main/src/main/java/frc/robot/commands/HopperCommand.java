@@ -16,9 +16,7 @@ public class HopperCommand extends Command {
 
   @Override
 public void execute() {
-<<<<<<< HEAD
 
-  System.out.println(RobotMap.SHOOT_TIMER);
 if(RobotMap.CLOGGING){
   Robot.intakeSubsystem.hopperUnstick(.25);
 }else if(!RobotMap.HOPPING){
@@ -27,14 +25,11 @@ if(RobotMap.CLOGGING){
 
   if(RobotMap.HOPPING){
     System.out.println("actually hopping");
-  Robot.intakeSubsystem.hopperSpin(-0.50);
+  Robot.intakeSubsystem.hopperSpin(-0.60);
 
   }else if(!RobotMap.CLOGGING){
   Robot.intakeSubsystem.hopperCease();  
   }
-=======
-    //Robot.intakeSubsystem.hopperSpin(1);
->>>>>>> master
   }
 
   @Override

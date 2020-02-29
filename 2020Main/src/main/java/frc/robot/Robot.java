@@ -125,6 +125,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Autonomous mode options", m_chooser);
     System.out.println("Auto selected: " + m_autoSelected);
 
+    RobotMap.HOPPING = false;
     driveSubsystem.flEnc.setPosition(0);
     autonomousCommand.timer = 0;
   }
