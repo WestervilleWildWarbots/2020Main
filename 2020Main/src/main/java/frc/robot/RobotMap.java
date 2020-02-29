@@ -32,5 +32,5 @@ public class RobotMap{
     public static final int FL_DIST_SENSOR = 2;
     public static final int FR_DIST_SENSOR = 1;
     public static final int BR_DIST_SENSOR = 0;
-    
+    public static final int BAL_DIST_SENSOR = 3;
 }
