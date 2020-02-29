@@ -50,9 +50,10 @@ public class Robot extends TimedRobot {
   public static OI oi;
 
   //ultrasonic init
-  public static AnalogInput flDist = new AnalogInput(RobotMap.FL_DIST_SENSOR);
-  public static AnalogInput frDist = new AnalogInput(RobotMap.FR_DIST_SENSOR);
-  public static AnalogInput brDist = new AnalogInput(RobotMap.BR_DIST_SENSOR);
+  public static AnalogPotentiometer flDist = new AnalogPotentiometer(RobotMap.FL_DIST_SENSOR);
+  public static AnalogPotentiometer frDist = new AnalogPotentiometer(RobotMap.FR_DIST_SENSOR);
+  public static AnalogPotentiometer brDist = new AnalogPotentiometer(RobotMap.BR_DIST_SENSOR);
+  public static AnalogPotentiometer balDist = new AnalogPotentiometer(RobotMap.BAL_DIST_SENSOR);
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
@@ -82,9 +83,9 @@ public class Robot extends TimedRobot {
 
 
     CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture();
 
     autonomousCommand.timer =0;
-    driveSubsystem.flEnc.setPosition(0);
 
     oi = new OI();
 
@@ -104,9 +105,13 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
    // System.out.println("robot");
 <<<<<<< HEAD
+<<<<<<< HEAD
 
    choice = m_chooser.getSelected();
 =======
+>>>>>>> master
+=======
+   choice = m_chooser.getSelected();
 >>>>>>> master
   }
 
@@ -127,6 +132,9 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("auto mode 2", "two");
     SmartDashboard.putData("Autonomous mode options", m_chooser);
     System.out.println("Auto selected: " + m_autoSelected);
+
+    driveSubsystem.flEnc.setPosition(0);
+    autonomousCommand.timer = 0;
   }
 
   /**
@@ -145,7 +153,10 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     driveCommand.execute();
 <<<<<<< HEAD
+<<<<<<< HEAD
     //shooterCommand.execute();
+=======
+>>>>>>> master
 =======
 >>>>>>> master
     shooterCommand.execute();
@@ -153,8 +164,12 @@ public class Robot extends TimedRobot {
     hopperCommand.execute();
     oi.stickUpdate();
 <<<<<<< HEAD
+<<<<<<< HEAD
     autoAligncommand.execute();
 =======
+>>>>>>> master
+=======
+    autoAligncommand.execute();
 >>>>>>> master
   }
 

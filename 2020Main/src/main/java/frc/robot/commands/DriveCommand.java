@@ -18,11 +18,16 @@ public class DriveCommand extends Command {
   @Override
   public void execute() {
 <<<<<<< HEAD
+<<<<<<< HEAD
     final double speedscale = 0.5;
     final double deadzone = 0.5;   
 =======
     final double speedscale = .1;
     final double deadzone = 0.15;   
+>>>>>>> master
+=======
+    final double speedscale = 0.5;
+    final double deadzone = 0.25;   
 >>>>>>> master
 
     double y = OI.driveStick.getY();

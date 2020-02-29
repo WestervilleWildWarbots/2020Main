@@ -11,7 +11,7 @@ public class IntakeSubsystem extends Subsystem {
   TalonSRX intakeTalon;
 
   public IntakeSubsystem() {
-    //hopperTalon = new TalonSRX(RobotMap.MOTOR_HOPPER);
+    hopperTalon = new TalonSRX(RobotMap.MOTOR_HOPPER);
     //intakeTalon = new TalonSRX(RobotMap.MOTOR_INTAKE);
   } 
 
@@ -21,8 +21,18 @@ public class IntakeSubsystem extends Subsystem {
   }
 
   public void hopperSpin(double speed){
-      //hopperTalon.set(ControlMode.PercentOutput, speed);
+      hopperTalon.set(ControlMode.PercentOutput, speed);
   }
+
+  public void hopperCease(){
+    hopperTalon.set(ControlMode.PercentOutput, 0);
+}
+
+public void hopperUnstick(double speed){
+      hopperTalon.set(ControlMode.PercentOutput, speed);
+}
+
+
   public void intakeSpin(double speed){
     //intakeTalon.set(ControlMode.PercentOutput, speed);
 
