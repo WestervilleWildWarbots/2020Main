@@ -15,7 +15,7 @@ public class HopperCommand extends Command {
 
   @Override
 public void execute() {
-    Robot.intakeSubsystem.hopperSpin(1);
+    //Robot.intakeSubsystem.hopperSpin(1);
   }
 
   @Override

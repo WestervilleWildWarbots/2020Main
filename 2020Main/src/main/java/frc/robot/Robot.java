@@ -103,8 +103,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
    // System.out.println("robot");
+<<<<<<< HEAD
 
    choice = m_chooser.getSelected();
+=======
+>>>>>>> master
   }
 
   /**
@@ -141,12 +144,18 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     driveCommand.execute();
+<<<<<<< HEAD
     //shooterCommand.execute();
+=======
+>>>>>>> master
     shooterCommand.execute();
     intakeCommand.execute();
     hopperCommand.execute();
     oi.stickUpdate();
+<<<<<<< HEAD
     autoAligncommand.execute();
+=======
+>>>>>>> master
   }
 
   /**
