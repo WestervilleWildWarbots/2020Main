@@ -16,6 +16,7 @@ public class HopperCommand extends Command {
 
   @Override
 public void execute() {
+<<<<<<< HEAD
 
   System.out.println(RobotMap.SHOOT_TIMER);
 if(RobotMap.CLOGGING){
@@ -31,6 +32,9 @@ if(RobotMap.CLOGGING){
   }else if(!RobotMap.CLOGGING){
   Robot.intakeSubsystem.hopperCease();  
   }
+=======
+    //Robot.intakeSubsystem.hopperSpin(1);
+>>>>>>> master
   }
 
   @Override
