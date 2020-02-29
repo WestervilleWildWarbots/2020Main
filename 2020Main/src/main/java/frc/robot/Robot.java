@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -17,6 +19,7 @@ import frc.robot.commands.DriveCommand;
 import frc.robot.commands.HopperCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
+import frc.robot.commands.AutoAlignCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -41,17 +44,23 @@ public class Robot extends TimedRobot {
   public static HopperCommand hopperCommand;
   public static IntakeCommand intakeCommand;
   public static AutonomousCommand autonomousCommand;
+  public static AutoAlignCommand autoAligncommand;
 
 //OI init
   public static OI oi;
 
   //ultrasonic init
-  Ultrasonic ultrasonic = new Ultrasonic(1,2);
+  public static AnalogPotentiometer flDist = new AnalogPotentiometer(RobotMap.FL_DIST_SENSOR);
+  public static AnalogPotentiometer frDist = new AnalogPotentiometer(RobotMap.FR_DIST_SENSOR);
+  public static AnalogPotentiometer brDist = new AnalogPotentiometer(RobotMap.BR_DIST_SENSOR);
+  public static AnalogPotentiometer balDist = new AnalogPotentiometer(RobotMap.BAL_DIST_SENSOR);
 
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+
+  public static String choice;
 
   /**
    * This function is run when the robot is first started up and should be
@@ -59,6 +68,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    
 
     driveSubsystem = new DriveSubsystem();
     shooterSubsystem = new ShooterSubsystem();
@@ -69,20 +79,18 @@ public class Robot extends TimedRobot {
     hopperCommand = new HopperCommand();
     intakeCommand = new IntakeCommand();
     autonomousCommand = new AutonomousCommand();
+    autoAligncommand = new AutoAlignCommand();
 
 
     CameraServer.getInstance().startAutomaticCapture();
+    CameraServer.getInstance().startAutomaticCapture();
 
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
+    autonomousCommand.timer =0;
 
     oi = new OI();
 
     //sets the ultrasonic to auto
-    ultrasonic.setAutomaticMode(true);
-
-    SmartDashboard.putNumber("Distance Sensor",ultrasonic.getRangeInches());
+   
   }
 
   /**
@@ -96,6 +104,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
    // System.out.println("robot");
+   choice = m_chooser.getSelected();
   }
 
   /**
@@ -111,9 +120,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
-    m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
+    m_chooser.setDefaultOption("auto mode 1", "one");
+    m_chooser.addOption("auto mode 2", "two");
+    SmartDashboard.putData("Autonomous mode options", m_chooser);
     System.out.println("Auto selected: " + m_autoSelected);
+
+    driveSubsystem.flEnc.setPosition(0);
+    autonomousCommand.timer = 0;
   }
 
   /**
@@ -135,6 +148,7 @@ public class Robot extends TimedRobot {
     intakeCommand.execute();
     hopperCommand.execute();
     oi.stickUpdate();
+    autoAligncommand.execute();
   }
 
   /**
