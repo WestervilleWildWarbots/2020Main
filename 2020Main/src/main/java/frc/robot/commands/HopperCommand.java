@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class HopperCommand extends Command {
@@ -15,7 +16,25 @@ public class HopperCommand extends Command {
 
   @Override
 public void execute() {
-    Robot.intakeSubsystem.hopperSpin(1);
+<<<<<<< HEAD
+
+  System.out.println(RobotMap.SHOOT_TIMER);
+if(RobotMap.CLOGGING){
+  Robot.intakeSubsystem.hopperUnstick(.25);
+}else if(!RobotMap.HOPPING){
+  Robot.intakeSubsystem.hopperCease();
+}
+
+  if(RobotMap.HOPPING){
+    System.out.println("actually hopping");
+  Robot.intakeSubsystem.hopperSpin(-0.50);
+
+  }else if(!RobotMap.CLOGGING){
+  Robot.intakeSubsystem.hopperCease();  
+  }
+=======
+    //Robot.intakeSubsystem.hopperSpin(1);
+>>>>>>> master
   }
 
   @Override

@@ -51,7 +51,9 @@ public class DriveSubsystem extends Subsystem {
   public void initDefaultCommand(){
 
   }
-
+  public void getGyros() {
+    
+  }
     //Basic Drive Method
   public void tankDrive(double leftSpeed, double rightSpeed) {
     frontLeft.set(leftSpeed);
