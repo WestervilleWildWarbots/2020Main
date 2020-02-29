@@ -19,6 +19,7 @@ import frc.robot.commands.DriveCommand;
 import frc.robot.commands.HopperCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
+import frc.robot.commands.VoltageTestCommand;
 import frc.robot.commands.AutoAlignCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -45,6 +46,7 @@ public class Robot extends TimedRobot {
   public static IntakeCommand intakeCommand;
   public static AutonomousCommand autonomousCommand;
   public static AutoAlignCommand autoAligncommand;
+  public static VoltageTestCommand voltageTestCommand;
 
 //OI init
   public static OI oi;
@@ -80,6 +82,7 @@ public class Robot extends TimedRobot {
     intakeCommand = new IntakeCommand();
     autonomousCommand = new AutonomousCommand();
     autoAligncommand = new AutoAlignCommand();
+    voltageTestCommand = new VoltageTestCommand();
 
 
     CameraServer.getInstance().startAutomaticCapture();
