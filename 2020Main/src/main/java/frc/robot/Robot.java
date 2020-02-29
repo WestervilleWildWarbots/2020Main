@@ -52,7 +52,7 @@ public class Robot extends TimedRobot {
   //ultrasonic init
   public static AnalogPotentiometer flDist = new AnalogPotentiometer(RobotMap.FL_DIST_SENSOR);
   public static AnalogPotentiometer frDist = new AnalogPotentiometer(RobotMap.FR_DIST_SENSOR);
-  public static AnalogPotentiometer brDist = new AnalogPotentiometer(RobotMap.BR_DIST_SENSOR);
+  //public static AnalogPotentiometer brDist = new AnalogPotentiometer(RobotMap.BR_DIST_SENSOR);
   public static AnalogPotentiometer balDist = new AnalogPotentiometer(RobotMap.BAL_DIST_SENSOR);
 
   private static final String kDefaultAuto = "Default";

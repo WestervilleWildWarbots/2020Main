@@ -36,7 +36,7 @@ public void execute() {
  
     SmartDashboard.putNumber("Front Left Distance", (512/2.54)*getDist(Robot.flDist));
     SmartDashboard.putNumber("Front Right Distance", (512/2.54)*getDist(Robot.frDist));
-    SmartDashboard.putNumber("Back Right Distance", (512/2.54)*getDist(Robot.brDist));
+    //SmartDashboard.putNumber("Back Right Distance", (512/2.54)*getDist(Robot.brDist));
     SmartDashboard.putNumber("Ball Distance", (512/2.54)*getDist(Robot.balDist));
 
     if(getDist(Robot.flDist)+5 >= getDist(Robot.frDist)&& getDist(Robot.flDist)-5 <= getDist(Robot.frDist)  && getDist(Robot.flDist) <= 15.5){
