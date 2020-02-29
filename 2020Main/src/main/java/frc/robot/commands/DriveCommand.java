@@ -4,6 +4,7 @@ import frc.robot.OI;
 import frc.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveCommand extends Command {
 
@@ -39,6 +40,7 @@ public class DriveCommand extends Command {
     double rightPower = speedscale*-(z+y);
 
     Robot.driveSubsystem.drive(leftPower, rightPower);
+    SmartDashboard.putNumber("Gyroscope",Robot.driveSubsystem.getGyro());
   }
 
   @Override

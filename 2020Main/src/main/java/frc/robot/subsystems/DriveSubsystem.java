@@ -27,7 +27,9 @@ public class DriveSubsystem extends Subsystem {
     frontRight = new CANSparkMax(RobotMap.MOTOR_FR,MotorType.kBrushless);
     backLeft = new CANSparkMax(RobotMap.MOTOR_BL,MotorType.kBrushless);
     backRight = new CANSparkMax(RobotMap.MOTOR_BR,MotorType.kBrushless);
+    
     flEnc = frontLeft.getEncoder();
+    
     frontRight.setInverted(true);
     backLeft.follow(frontLeft);    
     backRight.follow(frontRight);
@@ -41,9 +43,7 @@ public class DriveSubsystem extends Subsystem {
   public void initDefaultCommand(){
 
   }
-  public void getGyros() {
-    
-  }
+  
     //Basic Drive Method
   public void drive(double leftSpeed, double rightSpeed) {
     System.out.println(leftSpeed);
@@ -53,7 +53,7 @@ public class DriveSubsystem extends Subsystem {
     frontRight.set(rightSpeed);
   }
 
-  public static double getGyro(){
+  public double getGyro(){
     return RioGyro.getAngle();
 }
 }
