@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.controller.PIDController;
 import frc.robot.RobotMap;
 
 public class DriveSubsystem extends Subsystem {
@@ -26,8 +27,8 @@ public class DriveSubsystem extends Subsystem {
   public double Rp = 0.75;
   public double Ri = 0.001;
   public double Rd = 0.035;
-  private edu.wpi.first.wpilibj.controller.PIDController leftController = new edu.wpi.first.wpilibj.controller.PIDController(Lp,Li,Ld);
-  private edu.wpi.first.wpilibj.controller.PIDController rightController = new edu.wpi.first.wpilibj.controller.PIDController(Rp,Ri,Rd);
+  private PIDController leftController = new PIDController(Lp,Li,Ld);
+  private PIDController rightController = new PIDController(Rp,Ri,Rd);
 
   public DriveSubsystem() {
 
