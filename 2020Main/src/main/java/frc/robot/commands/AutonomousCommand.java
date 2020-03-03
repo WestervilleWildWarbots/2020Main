@@ -51,7 +51,31 @@ public class AutonomousCommand extends Command {
       }
 
     }
+
+  if(Robot.choice == "three"){
+    if(Robot.driveSubsystem.flEnc.getPosition() <= 8){
+      Robot.driveSubsystem.drive(-0.25, -0.25);  
+    }
+    else if(Robot.autoAlignCommand.getDist(Robot.flDist) <= 25||Robot.autoAlignCommand.getDist(Robot.frDist) <= 25){
+      Robot.driveSubsystem.drive(0.25, 0.25);
+    }
+    else if(timer <=400){
+      timer++;
+      Robot.driveSubsystem.drive(0, 0);
+      if(timer >50){
+      RobotMap.HOPPING=true;
+      }
+      Robot.shooterSubsystem.shootRamp(0.30);
+    }else if(timer == 401){
+      ShooterSubsystem.shootTime=0;
+      RobotMap.HOPPING=false;
+      timer++;
+    }else{
+      Robot.shooterSubsystem.ceaseRamp(0.30);
+    }
+
   }
+}
 
   @Override
   protected boolean isFinished() {

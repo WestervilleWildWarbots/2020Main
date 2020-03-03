@@ -19,12 +19,14 @@ public class DriveSubsystem extends Subsystem {
   
   public CANEncoder flEnc;
 
-  private static AnalogGyro RioGyro = new AnalogGyro(RobotMap.GYRO);
+  public static AnalogGyro RioGyro = new AnalogGyro(RobotMap.GYRO);
 
   public DriveSubsystem() {
 
     RioGyro.initGyro();
-		RioGyro.calibrate();
+    RioGyro.calibrate();
+    RioGyro.reset();
+
 
     frontLeft = new CANSparkMax(RobotMap.MOTOR_FL,MotorType.kBrushless );
     frontRight = new CANSparkMax(RobotMap.MOTOR_FR,MotorType.kBrushless);
