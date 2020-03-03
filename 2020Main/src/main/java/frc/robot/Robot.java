@@ -104,10 +104,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
    // System.out.println("robot");
-<<<<<<< HEAD
 
-=======
->>>>>>> master
    choice = m_chooser.getSelected();
   }
 
