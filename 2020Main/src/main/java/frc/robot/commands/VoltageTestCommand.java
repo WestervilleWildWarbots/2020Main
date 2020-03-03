@@ -7,8 +7,7 @@
 
 package frc.robot.commands;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.command.Command;
@@ -38,10 +37,17 @@ public void execute() {
 
       PrintWriter outputStream;
       try {
+        File storage = new File("C:/Downloads/TERST", fileName);
+        storage.createNewFile();
         outputStream = new PrintWriter(fileName);
         outputStream.println(timer + " " + RobotController.getBatteryVoltage());
+        // outputStream.PrintWriter(timer+" "+RobotController.getBatteryVoltage());
         System.out.println(timer + " " + RobotController.getBatteryVoltage());
+        outputStream.close();
       } catch (FileNotFoundException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IOException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
       }
@@ -49,18 +55,15 @@ public void execute() {
       timer++;
     }
   }
-
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
-
   // Called once after isFinished returns true
   @Override
   protected void end() {
   }
-
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
