@@ -15,6 +15,7 @@ import frc.robot.Robot;
 
 public class AutoAlignCommand extends Command {
   public static Boolean aligned;
+  public static Boolean quasi_align;
   public AutoAlignCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -45,7 +46,15 @@ public void execute() {
     }else{
       aligned = false;
     }
+
+    if(getDist(Robot.flDist)+10 >= getDist(Robot.frDist)&& getDist(Robot.flDist)-10 <= getDist(Robot.frDist)  && getDist(Robot.flDist) <= 25){
+      aligned =true;
+      
+    }else{
+      aligned = false;
+    }
     SmartDashboard.putBoolean("Aligned",aligned );
+    SmartDashboard.putBoolean("Quasi Aligned",quasi_align );
   }
 
   // Make this return true when this Command no longer needs to run execute()
