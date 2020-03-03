@@ -18,6 +18,16 @@ public class DriveSubsystem extends Subsystem {
   public CANSparkMax backRight;
   
   public CANEncoder flEnc;
+  public CANEncoder frEnc;
+
+  public double Lp = 0.75;
+  public double Li = 0.005;
+  public double Ld = 0.0;
+  public double Rp = 0.75;
+  public double Ri = 0.005;
+  public double Rd = 0.0;
+  private edu.wpi.first.wpilibj.controller.PIDController leftController = new edu.wpi.first.wpilibj.controller.PIDController(Lp,Li,Ld);
+  private edu.wpi.first.wpilibj.controller.PIDController rightController = new edu.wpi.first.wpilibj.controller.PIDController(Rp,Ri,Rd);
 
   public static AnalogGyro RioGyro = new AnalogGyro(RobotMap.GYRO);
 
@@ -34,6 +44,7 @@ public class DriveSubsystem extends Subsystem {
     backRight = new CANSparkMax(RobotMap.MOTOR_BR,MotorType.kBrushless);
     
     flEnc = frontLeft.getEncoder();
+    frEnc = frontRight.getEncoder();
     
     frontRight.setInverted(true);
     backLeft.follow(frontLeft);    
@@ -50,10 +61,7 @@ public class DriveSubsystem extends Subsystem {
   }
   
     //Basic Drive Method
-  public void drive(double leftSpeed, double rightSpeed) {
-    System.out.println(leftSpeed);
-    System.out.println(rightSpeed);
-
+  public void tankDrive(double leftSpeed, double rightSpeed) {
     frontLeft.set(leftSpeed);
     frontRight.set(rightSpeed);
   }
@@ -61,4 +69,9 @@ public class DriveSubsystem extends Subsystem {
   public double getGyro(){
     return RioGyro.getAngle();
 }
+
+  public void drive(double leftSpeed, double rightSpeed){
+    frontLeft.set(leftController.calculate(leftSpeed));
+    frontRight.set(rightController.calculate(rightSpeed));
+  }
 }
