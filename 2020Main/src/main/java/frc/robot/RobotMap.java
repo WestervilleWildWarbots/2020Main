@@ -4,6 +4,7 @@ public class RobotMap{
     
     //drive stick
     public static final int DRIVE_STICK = 0;
+    public static final int ARM_STICK = 1;
 
     //command booleans
     public static Boolean SHOOTING= false;

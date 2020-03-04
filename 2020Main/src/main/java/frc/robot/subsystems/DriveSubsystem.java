@@ -29,14 +29,12 @@ public class DriveSubsystem extends Subsystem {
   private edu.wpi.first.wpilibj.controller.PIDController leftController = new edu.wpi.first.wpilibj.controller.PIDController(Lp,Li,Ld);
   private edu.wpi.first.wpilibj.controller.PIDController rightController = new edu.wpi.first.wpilibj.controller.PIDController(Rp,Ri,Rd);
 
-  public static AnalogGyro RioGyro = new AnalogGyro(RobotMap.GYRO);
+  public AnalogGyro RioGyro = new AnalogGyro(RobotMap.GYRO);
 
   public DriveSubsystem() {
 
     RioGyro.initGyro();
     RioGyro.calibrate();
-    RioGyro.reset();
-
 
     frontLeft = new CANSparkMax(RobotMap.MOTOR_FL,MotorType.kBrushless );
     frontRight = new CANSparkMax(RobotMap.MOTOR_FR,MotorType.kBrushless);

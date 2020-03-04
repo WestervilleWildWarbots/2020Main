@@ -41,11 +41,12 @@ public class DriveCommand extends Command {
 
     Robot.driveSubsystem.drive(leftPower, rightPower);
 
-    if(Robot.driveSubsystem.getGyro() > 1){
-      Robot.driveSubsystem.RioGyro.reset();
-    }
+    //if(Robot.driveSubsystem.getGyro() > 1){
+     // Robot.driveSubsystem.RioGyro.reset();
+    //}
 
-    SmartDashboard.putNumber("Gyroscope",360*Robot.driveSubsystem.getGyro());
+    SmartDashboard.putNumber("Gyroscope",Robot.driveSubsystem.RioGyro.getAngle());
+    System.out.println(Robot.driveSubsystem.getGyro());
   }
 
   @Override

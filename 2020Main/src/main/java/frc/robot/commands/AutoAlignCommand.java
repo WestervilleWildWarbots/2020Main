@@ -14,8 +14,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class AutoAlignCommand extends Command {
-  public static Boolean aligned;
-  public static Boolean quasi_align;
+  public Boolean aligned = false;
+  public  Boolean quasi = false;
+  public  Boolean sweetSpot = false;
   public AutoAlignCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -23,7 +24,7 @@ public class AutoAlignCommand extends Command {
   }
 
   public double getDist(AnalogPotentiometer ainp){
-    return ainp.get();
+    return (512/2.54)*ainp.get();
   }
 
   // Called just before this Command runs the first time
@@ -35,26 +36,40 @@ public class AutoAlignCommand extends Command {
   @Override
 public void execute() {
  
-    SmartDashboard.putNumber("Front Left Distance", (512/2.54)*getDist(Robot.flDist));
-    SmartDashboard.putNumber("Front Right Distance", (512/2.54)*getDist(Robot.frDist));
+    SmartDashboard.putNumber("Front Left Distance", getDist(Robot.flDist));
+    SmartDashboard.putNumber("Front Right Distance", getDist(Robot.frDist));
     //SmartDashboard.putNumber("Back Right Distance", (512/2.54)*getDist(Robot.brDist));
-    SmartDashboard.putNumber("Ball Distance", (512/2.54)*getDist(Robot.balDist));
+    SmartDashboard.putNumber("Ball Distance", getDist(Robot.balDist));
 
-    if(getDist(Robot.flDist)+5 >= getDist(Robot.frDist)&& getDist(Robot.flDist)-5 <= getDist(Robot.frDist)  && getDist(Robot.flDist) <= 15.5){
+    if(getDist(Robot.flDist)+10 >= getDist(Robot.frDist)&& getDist(Robot.flDist)-10 <= getDist(Robot.frDist)  && ((getDist(Robot.flDist) <= 36 && getDist(Robot.flDist) > 26)|| (getDist(Robot.frDist) <= 36 && getDist(Robot.frDist) > 26))){
       aligned =true;
       
     }else{
       aligned = false;
     }
-
-    if(getDist(Robot.flDist)+10 >= getDist(Robot.frDist)&& getDist(Robot.flDist)-10 <= getDist(Robot.frDist)  && getDist(Robot.flDist) <= 25){
-      aligned =true;
+/*
+    if(getDist(Robot.flDist)+5 >= getDist(Robot.frDist)&& getDist(Robot.flDist)-5 <= getDist(Robot.frDist)  && ((getDist(Robot.flDist) <= 42 && getDist(Robot.flDist) > 38)|| (getDist(Robot.frDist) <= 42 && getDist(Robot.frDist) > 38))){
+      sweetSpot =true;
       
     }else{
-      aligned = false;
+      sweetSpot = false;
     }
+*/
+
+/*
+    if(getDist(Robot.flDist)+10 >= getDist(Robot.frDist)&& getDist(Robot.flDist)-10 <= getDist(Robot.frDist)  && getDist(Robot.flDist) <= 55){
+      quasi =true;
+      
+    }else{
+      quasi = false;
+    }
+    */
     SmartDashboard.putBoolean("Aligned",aligned );
-    SmartDashboard.putBoolean("Quasi Aligned",quasi_align );
+    SmartDashboard.putBoolean("Sweet Spot",sweetSpot);
+  
+    //SmartDashboard.putBoolean("Quasi",quasi);
+
+    System.out.println(aligned);
   }
 
   // Make this return true when this Command no longer needs to run execute()
