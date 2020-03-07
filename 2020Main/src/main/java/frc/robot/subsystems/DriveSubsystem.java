@@ -23,10 +23,10 @@ public class DriveSubsystem extends Subsystem {
 
   public double Lp = 0.75;
   public double Li = 0.001;
-  public double Ld = 0.035;
+  public double Ld = 0.045;
   public double Rp = 0.75;
   public double Ri = 0.001;
-  public double Rd = 0.035;
+  public double Rd = 0.045;
   private PIDController leftController = new PIDController(Lp,Li,Ld);
   private PIDController rightController = new PIDController(Rp,Ri,Rd);
 
