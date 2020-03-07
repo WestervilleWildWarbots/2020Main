@@ -26,6 +26,13 @@ public class AutoShootCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(Robot.autoAlignCommand.getDist(Robot.flDist)<=34 && Robot.autoAlignCommand.getDist(Robot.frDist)<=34){
+      Robot.driveSubsystem.drive(-.5,-.5);
+    }else{
+      Robot.driveSubsystem.drive(0,0);
+    }
+
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
