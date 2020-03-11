@@ -2,7 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.AutoShootCommand;
+import frc.robot.commands.SlamAndJamCommand;
 import frc.robot.commands.HopperCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -12,19 +12,16 @@ public class OI{
     public static Joystick driveStick;
     public static Joystick armStick;
     public static JoystickButton shootButton;
-    final private JoystickButton autoButton;
-
+    
     public OI(){
         System.out.println("in oi");
         driveStick = new Joystick(RobotMap.DRIVE_STICK);
         armStick = new Joystick(RobotMap.ARM_STICK);
 
-        autoButton = new JoystickButton(armStick, 2);
         
         //start of intake button code
         ///*change to private*/boolean intakeState = false;
         //
-        autoButton.whenPressed(new AutoShootCommand());
         //end of intake button code
     }
 
@@ -35,6 +32,16 @@ public class OI{
             System.out.println("get button");
             RobotMap.SHOOTING = !RobotMap.SHOOTING;
             RobotMap.SHOOT_TIMER = 0;
+            ShooterSubsystem.shootTime =0;
+            RobotMap.JAMMING = false;
+        }
+
+        if(armStick.getRawButton(2)&&RobotMap.SHOOT_TIMER >= 50){
+            System.out.println("get button");
+            RobotMap.JAMMING = !RobotMap.JAMMING;
+            RobotMap.SHOOTING = false;
+            RobotMap.SHOOT_TIMER = 0;
+            RobotMap.SLAMMED = false;
             ShooterSubsystem.shootTime =0;
         }
 

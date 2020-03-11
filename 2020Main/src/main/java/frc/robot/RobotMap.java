@@ -11,6 +11,9 @@ public class RobotMap{
     public static Boolean INIT_SHOOT = false;
     public static Boolean HOPPING = false;
     public static Boolean CLOGGING = false;
+    public static Boolean JAMMING = false;
+
+    public static Boolean SLAMMED = false;
 
     public static double SHOOT_TIMER = 0;
     public static double HOPPER_TIMER = 0;
