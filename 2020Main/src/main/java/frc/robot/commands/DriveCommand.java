@@ -34,7 +34,7 @@ public class DriveCommand extends Command {
       z = 0;
     }
    
-    z*=Math.abs(z);
+    z*=.8*Math.abs(z);
 
     double leftPower = speedscale*-(z-y);
     double rightPower = speedscale*(z+y);
