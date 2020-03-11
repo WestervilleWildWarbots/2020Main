@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import java.io.*;
+import java.util.logging.Filter;
 
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,11 +17,12 @@ public class VoltageTestCommand extends Command {
 
   public int timer;
   public String fileName;
-
+  public Filter exclude;
   public VoltageTestCommand() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    int timer = 0;
+    timer = 0;
+    
     String fileName = "voltageOutput.txt";
   }
 
@@ -32,6 +34,15 @@ public class VoltageTestCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
 public void execute() {
+
+  if(timer == 50){
+  System.out.println(RobotController.getBatteryVoltage());
+  timer=0;
+  }else{
+  timer++;
+  }
+
+/*
     while (timer < 60) {
       RobotController.getBatteryVoltage();
 
@@ -54,6 +65,7 @@ public void execute() {
      
       timer++;
     }
+    */
   }
   // Make this return true when this Command no longer needs to run execute()
   @Override

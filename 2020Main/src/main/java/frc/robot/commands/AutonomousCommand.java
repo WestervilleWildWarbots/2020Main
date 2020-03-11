@@ -18,9 +18,9 @@ public class AutonomousCommand extends Command {
 
   @Override
   public void execute() {
-    System.out.println(Robot.choice);//prints out the auto mode choice
-    System.out.println(Robot.driveSubsystem.flEnc.getPosition());
-    System.out.println(timer);
+    //System.out.println(Robot.choice);//prints out the auto mode choice
+    //System.out.println(Robot.driveSubsystem.flEnc.getPosition());
+    //System.out.println(timer);
 
     if(Robot.choice == "one"){
       if(Robot.driveSubsystem.flEnc.getPosition() <= 10){

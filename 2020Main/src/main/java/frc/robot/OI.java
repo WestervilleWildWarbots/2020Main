@@ -32,20 +32,20 @@ public class OI{
         //System.out.println("updating");
 
         if(driveStick.getRawButton(1)&&RobotMap.SHOOT_TIMER >= 50){
-            System.out.println("get button");
+            //System.out.println("get button");
             RobotMap.SHOOTING = !RobotMap.SHOOTING;
             RobotMap.SHOOT_TIMER = 0;
             ShooterSubsystem.shootTime =0;
         }
 
         if(driveStick.getRawButton(3)&&RobotMap.HOPPER_TIMER >= 50){
-            System.out.println("get button");
+            //System.out.println("get button");
             RobotMap.HOPPING = !RobotMap.HOPPING;
             RobotMap.HOPPER_TIMER= 0;
         }
 
         if(driveStick.getRawButton(4)&&RobotMap.HOPPER_TIMER >= 50){
-            System.out.println("get button");
+            //System.out.println("get button");
             RobotMap.HOPPING = false;
             RobotMap.CLOGGING = !RobotMap.CLOGGING;
             RobotMap.HOPPER_TIMER= 0;

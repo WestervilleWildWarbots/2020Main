@@ -13,7 +13,7 @@ import frc.robot.RobotMap;
 
 public class ShooterCommand extends Command {
   public ShooterCommand() {
-    System.out.println("reached Shooter");
+    //System.out.println("reached Shooter");
   }
 
   // Called just before this Command runs the first time
