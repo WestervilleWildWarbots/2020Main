@@ -46,8 +46,8 @@ public class DriveSubsystem extends Subsystem {
     //System.out.println(leftSpeed);
     //System.out.println(rightSpeed);
 
-    frontLeft.set(leftSpeed);
-    frontRight.set(rightSpeed);
+    frontLeft.set(0.5);
+    frontRight.set(0.5);
   }
 
   
