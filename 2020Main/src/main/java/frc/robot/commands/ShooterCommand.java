@@ -28,7 +28,7 @@ public class ShooterCommand extends Command {
 
     if(RobotMap.SHOOTING){
      // System.out.println("actually shooting");
-    Robot.shooterSubsystem.shootRamp(0.325);
+    Robot.shooterSubsystem.shootRamp(0.3);
 
       if(!RobotMap.INIT_SHOOT){
         RobotMap.INIT_SHOOT = true;

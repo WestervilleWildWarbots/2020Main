@@ -17,7 +17,7 @@ public class DriveCommand extends Command {
 
   @Override
   public void execute() {
-    final double speedscale = 0.5;
+    final double speedscale = 0.9;
     final double deadzoneY = 0.25;
     final double deadzoneZ = 0.35;   
 
@@ -33,7 +33,7 @@ public class DriveCommand extends Command {
       z = 0;
     }
    
-    z*=Math.abs(z);
+    z*=Math.abs(z*0.75);
 
 
     double leftPower = speedscale*-(z-y);
