@@ -3,3 +3,16 @@ Tie cart to back of robot with rope
 Drag it around for 5 minutes
 Print out readings to console and table it on smart dashboard
 Copy paste console readings to google sheet
+
+Shooter Test Without Driving:
+1. Put fully charged battery into robot
+2. Turn on the robot
+3. Connect the laptop to the robot
+4. Close the RIOLog in VSCode if it is open
+5. Deploy the VoltageTest branch robot code to the robot
+6. Enable the robot
+7. Turn on the shooter and hopper
+8. Allow to run for 150 seconds
+9. Dissable the shooter and hopper
+10. Dissable the robot
+11. Record the data in the Voltage Testing Google Sheet
